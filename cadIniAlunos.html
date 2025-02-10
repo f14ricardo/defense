@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>🥊🥋 Projeto Defense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="DEFENSE-INSTITUTO.png" alt="Instituto Defense" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCadastro" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            📝 Cadastro
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownCadastro">
+                            <li><a class="dropdown-item" href="#cadastroAlunos">✏️ Cadastro Inicial de Alunos</a></li>
+                            <li><a class="dropdown-item" href="#cadastroAlunos">📋 Cadastro de Alunos</a></li>
+                            <li><a class="dropdown-item" href="#cadastroInstrutores">👨‍💼 Cadastro de Vendedores</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#cadastroTurmas">🏫 Cadastro de Turmas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVendas" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            💰 Vendas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownVendas">
+                            <li><a class="dropdown-item" href="#vendasMensais">📅 Vendas Mensais</a></li>
+                            <li><a class="dropdown-item" href="#vendasAnuais">📊 Vendas Anuais</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRelatorios" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            📑 Relatórios
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownRelatorios">
+                            <li><a class="dropdown-item" href="#relatorio1">📄 Relatórios 1</a></li>
+                            <li><a class="dropdown-item" href="#relatorio2">📄 Relatórios 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Cadastro Inicial de Alunos -->
+    <div class="container mt-4" id="preCadastro">
+        <h2>🖊️ Cadastro Inicial Alunos</h2>
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Vendedor</label>
+                <div class="input-group">
+                    <select class="form-select" id="vendedor">
+                        <option>Vendedor 1</option>
+                        <option>Vendedor 2</option>
+                        <option>Vendedor 3</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#modalCadastroVendedor">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Data</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Modalidade</label>
+                <div class="input-group">
+                    <select class="form-select" id="modalidade">
+                        <option>Luta 1</option>
+                        <option>Luta 2</option>
+                        <option>Luta 3</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#modalCadastroLuta">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Observações</label>
+                <textarea class="form-control" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    <!-- Modal para Cadastro de Lutas -->
+    <div class="modal fade" id="modalCadastroLuta" tabindex="-1" aria-labelledby="modalCadastroLutaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCadastroLutaLabel">Cadastrar Nova Luta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formCadastroLuta">
+                        <div class="mb-3">
+                            <label class="form-label">Nome da Luta</label>
+                            <input type="text" class="form-control" id="nomeLuta" placeholder="Ex: Luta 1" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="btnSalvarLuta">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Cadastro de Vendedor -->
+    <div class="modal fade" id="modalCadastroVendedor" tabindex="-1" aria-labelledby="modalVendedorLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCadastroVendedorLabel">Cadastrar Vendedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formCadastroVendedor">
+                        <div class="mb-3">
+                            <label class="form-label">Nome do Vendedor</label>
+                            <input type="text" class="form-control" id="nomeVendedor" placeholder="Ex: Vendedor 1"
+                                required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="btnVendedor">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <!-- Logo -->
+                <div class="col-md-4 text-center text-md-start">
+                    <img src="DEFENSE-INSTITUTO.png" 
+                         alt="Instituto Defense" 
+                         height="50">
+                    <p class="mb-0 mt-2">Todos os direitos reservados &copy; 2025</p>
+                </div>
+    
+                <!-- Contato -->
+                <div class="col-md-4 text-center">
+                    <h5>📞 Contato</h5>
+                    <p class="mb-1"><i class="fas fa-envelope"></i> atendimento@institutodefense.com.br</p>
+                    <p class="mb-1"><i class="fas fa-phone"></i> (11) 97461-4356</p>
+                    <p class="mb-0"><i class="fas fa-map-marker-alt"></i> R. João Makiyama, 186 - SP</p>
+                </div>
+    
+                <!-- Redes Sociais -->
+                <div class="col-md-4 text-center text-md-end">
+                    <h5>🌐 Redes Sociais</h5>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter"></i> Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
