@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fechamento de Caixa - Projeto Defense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="js/loadNavbarFooter.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 30px;
+            width: 6px;
+            background-color: #198754;
+            border-radius: 3px;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+            color: #198754;
+        }
+        
+        .btn-custom {
+            font-weight: 500;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+        
+        .summary-card {
+            border-left: 4px solid #198754;
+            margin-bottom: 15px;
+        }
+        
+        .payment-method {
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f8f9fa;
+        }
+        
+        .money-icon {
+            font-size: 2rem;
+            color: #198754;
+        }
+        
+        .form-control[readonly] {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Fechamento de Caixa -->
+    <div class="container">
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-cash-coin"></i> Fechamento de Caixa
+            </h3>
+            
+            <div class="row">
+                <!-- Resumo do Dia -->
+                <div class="col-md-8">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="bi bi-calendar-day"></i> Resumo do Dia</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Data</label>
+                                    <input type="date" class="form-control" value="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Responsável</label>
+                                    <input type="text" class="form-control" value="João Silva" readonly>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card summary-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Vendas de Produtos</h5>
+                                            <p class="card-text display-6 text-success">R$ 1.250,00</p>
+                                            <p class="card-text small text-muted">15 itens vendidos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card summary-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Vendas de Serviços</h5>
+                                            <p class="card-text display-6 text-success">R$ 2.480,00</p>
+                                            <p class="card-text small text-muted">8 serviços contratados</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total do Dia</h5>
+                                    <p class="card-text display-4 text-success">R$ 3.730,00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formas de Pagamento -->
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="bi bi-credit-card"></i> Formas de Pagamento</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="payment-method">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-cash-stack money-icon me-3"></i>
+                                    <h5 class="mb-0">Dinheiro</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Valor em Caixa</label>
+                                        <input type="text" class="form-control" value="R$ 850,00" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Valor para Retirada</label>
+                                        <input type="text" class="form-control" placeholder="R$ 0,00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-credit-card money-icon me-3"></i>
+                                    <h5 class="mb-0">Cartão de Crédito</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Total Recebido</label>
+                                        <input type="text" class="form-control" value="R$ 1.480,00" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Taxas</label>
+                                        <input type="text" class="form-control" value="R$ 44,40" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-card-heading money-icon me-3"></i>
+                                    <h5 class="mb-0">Cartão de Débito</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Total Recebido</label>
+                                        <input type="text" class="form-control" value="R$ 1.000,00" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Taxas</label>
+                                        <input type="text" class="form-control" value="R$ 20,00" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-qr-code money-icon me-3"></i>
+                                    <h5 class="mb-0">PIX</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Total Recebido</label>
+                                        <input type="text" class="form-control" value="R$ 400,00" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Taxas</label>
+                                        <input type="text" class="form-control" value="R$ 0,00" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fechamento -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm sticky-top" style="top: 20px;">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="bi bi-lock"></i> Fechamento</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Saldo Inicial</label>
+                                <input type="text" class="form-control" value="R$ 100,00" readonly>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Total de Vendas</label>
+                                <input type="text" class="form-control" value="R$ 3.730,00" readonly>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Total de Taxas</label>
+                                <input type="text" class="form-control" value="R$ 64,40" readonly>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Retiradas</label>
+                                <input type="text" class="form-control" placeholder="R$ 0,00">
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Saldo Final Esperado</label>
+                                <input type="text" class="form-control" value="R$ 3.765,60" readonly>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Saldo Final Real</label>
+                                <input type="text" class="form-control" placeholder="R$ 0,00">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Diferença</label>
+                                <input type="text" class="form-control" value="R$ 0,00" readonly>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Observações</label>
+                                <textarea class="form-control" rows="3" placeholder="Alguma observação sobre o fechamento..."></textarea>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-success w-100">
+                                <i class="bi bi-check-circle"></i> Confirmar Fechamento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Calcular diferença ao inserir saldo final real
+        document.querySelector('input[placeholder="R$ 0,00"]').addEventListener('input', function() {
+            const esperado = 3765.60; // Valor do saldo esperado
+            const real = parseFloat(this.value.replace('R$ ', '').replace(',', '.')) || 0;
+            const diferenca = real - esperado;
+            
+            document.querySelector('input[value="R$ 0,00"]').value = 
+                `R$ ${diferenca.toFixed(2).replace('.', ',')}`;
+            
+            // Mudar cor conforme diferença
+            const diffInput = document.querySelector('input[value="R$ 0,00"]');
+            if (diferenca > 0) {
+                diffInput.classList.add('text-success');
+                diffInput.classList.remove('text-danger');
+            } else if (diferenca < 0) {
+                diffInput.classList.add('text-danger');
+                diffInput.classList.remove('text-success');
+            } else {
+                diffInput.classList.remove('text-success', 'text-danger');
+            }
+        });
+    </script>
+</body>
+</html>

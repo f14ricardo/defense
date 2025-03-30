@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas de Serviços - Projeto Defense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="js/loadNavbarFooter.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 30px;
+            width: 6px;
+            background-color: #198754;
+            border-radius: 3px;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+            color: #198754;
+        }
+        
+        .btn-custom {
+            font-weight: 500;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+        
+        .service-card {
+            transition: all 0.3s;
+            cursor: pointer;
+            border-left: 4px solid #198754;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box i {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            color: #6c757d;
+        }
+        
+        .search-box input {
+            padding-left: 40px;
+        }
+        
+        .client-info {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Vendas de Serviços -->
+    <div class="container">
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-tools"></i> Vendas de Serviços
+            </h3>
+            
+            <div class="row">
+                <!-- Seleção de Cliente e Serviços -->
+                <div class="col-md-8">
+                    <!-- Informações do Cliente -->
+                    <div class="client-info">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Aluno/Cliente</label>
+                                <select class="form-select">
+                                    <option selected>Selecione o cliente</option>
+                                    <option>João Silva (Matrícula: 1001)</option>
+                                    <option>Maria Oliveira (Matrícula: 1002)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Vendedor</label>
+                                <select class="form-select">
+                                    <option selected>Selecione o vendedor</option>
+                                    <option>Carlos Souza</option>
+                                    <option>Ana Santos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Serviços Disponíveis -->
+                    <h5 class="mb-3">Serviços Disponíveis</h5>
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div class="col">
+                            <div class="card service-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="card-title">Aula Particular</h5>
+                                        <span class="badge bg-success">Disponível</span>
+                                    </div>
+                                    <p class="card-text">Aula individual com professor dedicado</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold text-success">R$ 120,00</span>
+                                        <button class="btn btn-sm btn-outline-success">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card service-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="card-title">Pacote Mensal</h5>
+                                        <span class="badge bg-success">Disponível</span>
+                                    </div>
+                                    <p class="card-text">Acesso ilimitado às aulas em grupo</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold text-success">R$ 250,00</span>
+                                        <button class="btn btn-sm btn-outline-success">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resumo da Venda -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="bi bi-receipt"></i> Resumo da Venda</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-3">Serviços Selecionados</h6>
+                            <div id="servicos-selecionados">
+                                <div class="alert alert-info mb-0">
+                                    <i class="bi bi-info-circle"></i> Nenhum serviço selecionado
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <div class="d-flex justify-content-between">
+                                    <strong>Subtotal:</strong>
+                                    <strong>R$ 0,00</strong>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <strong>Desconto:</strong>
+                                    <strong>R$ 0,00</strong>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <strong>Total:</strong>
+                                    <strong class="text-success">R$ 0,00</strong>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Forma de Pagamento</label>
+                                <select class="form-select">
+                                    <option selected>Selecione</option>
+                                    <option>Dinheiro</option>
+                                    <option>Cartão de Crédito</option>
+                                    <option>Cartão de Débito</option>
+                                    <option>PIX</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <button class="btn btn-success w-100">
+                                <i class="bi bi-check-circle"></i> Finalizar Venda
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Adicionar serviço ao resumo
+        document.querySelectorAll('.btn-outline-success').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const serviceCard = this.closest('.card');
+                const serviceName = serviceCard.querySelector('.card-title').textContent;
+                const servicePrice = serviceCard.querySelector('.text-success').textContent;
+                
+                // Criar item do serviço
+                const serviceItem = document.createElement('div');
+                serviceItem.className = 'card mb-2';
+                serviceItem.innerHTML = `
+                    <div class="card-body p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0">${serviceName}</h6>
+                                <small class="text-muted">${servicePrice}</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // Adicionar ao resumo
+                const servicosSelecionados = document.getElementById('servicos-selecionados');
+                if (servicosSelecionados.querySelector('.alert')) {
+                    servicosSelecionados.innerHTML = '';
+                }
+                servicosSelecionados.appendChild(serviceItem);
+                
+                // Atualizar total
+                updateServiceTotal();
+            });
+        });
+        
+        // Atualizar total dos serviços
+        function updateServiceTotal() {
+            // Implementar lógica para calcular total
+            console.log('Atualizando total dos serviços...');
+        }
+    </script>
+</body>
+</html>

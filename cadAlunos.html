@@ -4,201 +4,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>🥊🥋 Projeto Defense</title>
+    <title>Cadastro de Alunos - Projeto Defense</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="js/loadNavbarFooter.js"></script>
-
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 30px;
+            width: 6px;
+            background-color: #0d6efd;
+            border-radius: 3px;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+            color: #0d6efd;
+        }
+        
+        .btn-custom {
+            font-weight: 500;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        .input-group-text {
+            background-color: #f1f3f5;
+        }
+        
+        .add-btn {
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <a href="index.html"><img src="img/DEFENSE-INSTITUTO.png" alt="Instituto Defense" height="60"></a>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCadastro" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            📝 Cadastro
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownCadastro">
-                            <li><a class="dropdown-item" href="#cadastroAlunos">✏️ Cadastro Inicial</a></li>
-                            <li><a class="dropdown-item" href="#cadastroAlunos">📋 Cadastro de Alunos</a></li>
-                            <li><a class="dropdown-item" href="#cadastroInstrutores">👨‍💼 Vendedores</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#cadastroTurmas">🏫 Cadastro de Turmas</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVendas" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            💰 Vendas
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownVendas">
-                            <li><a class="dropdown-item" href="#vendasMensais">📅 Vendas Mensais</a></li>
-                            <li><a class="dropdown-item" href="#vendasAnuais">📊 Vendas Anuais</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRelatorios" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            📑 Relatórios
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownRelatorios">
-                            <li><a class="dropdown-item" href="#relatorio1">📄 Relatórios 1</a></li>
-                            <li><a class="dropdown-item" href="#relatorio2">📄 Relatórios 2</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
 
     <!-- Cadastro de Alunos -->
-    <div class="container mt-5">
-        <h2 class="mb-4"><i class="bi bi-pencil"></i>📋 Cadastro de Alunos</h2>
-        <form>
-            <div class="mb-3">
-                <label class="form-label">Nome do Aluno:</label>
-                <div class="input-group">
-                    <select class="form-select" id="aluno">
-                        <option>Aluno 1</option>
-                        <option>Aluno 2</option>
-                        <option>Aluno 3</option>
-                    </select>
-                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#">
-                        <i class="fas fa-plus"></i>
+    <div class="container">
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-people-fill"></i> Cadastro de Alunos
+            </h3>
+            
+            <form>
+                <!-- Dados do Aluno -->
+                <div class="mb-4">
+                    <label class="form-label">Nome do Aluno</label>
+                    <div class="input-group">
+                        <select class="form-select" id="aluno">
+                            <option selected disabled>Selecione um aluno</option>
+                            <option>Aluno 1</option>
+                            <option>Aluno 2</option>
+                            <option>Aluno 3</option>
+                        </select>
+                        <button type="button" class="btn btn-outline-primary add-btn" data-bs-toggle="modal" data-bs-target="#modalAluno">
+                            <i class="bi bi-plus-lg"></i> Novo
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dados Pessoais -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="form-label">Data de Nascimento</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                            <input type="date" class="form-control" id="dataNascimento">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Data Inicial do Contrato</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-file-earmark-text"></i></span>
+                            <input type="date" class="form-control" id="dataInicialContrato">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Endereço -->
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <label class="form-label">CEP</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-postcard"></i></span>
+                            <input type="text" class="form-control" id="cep" placeholder="00000-000" onblur="buscarEndereco()">
+                            <button class="btn btn-outline-secondary" type="button" id="btnBuscarCep">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="form-label">Endereço</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                            <input type="text" class="form-control" id="endereco" placeholder="Rua, Avenida, etc." readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Número</label>
+                        <input type="text" class="form-control" id="numero" placeholder="Nº">
+                    </div>
+                </div>
+                
+                <!-- Complemento -->
+                <div class="row mb-4">
+                    <div class="col-md-5 mb-3 mb-md-0">
+                        <label class="form-label">Bairro</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-pin-map"></i></span>
+                            <input type="text" class="form-control" id="bairro" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3 mb-md-0">
+                        <label class="form-label">Cidade</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-building"></i></span>
+                            <input type="text" class="form-control" id="cidade" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">UF</label>
+                        <input type="text" class="form-control" id="uf" readonly>
+                    </div>
+                </div>
+                
+                <!-- Turma e Plano -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="form-label">Turma</label>
+                        <div class="input-group">
+                            <select class="form-select" id="turma">
+                                <option selected disabled>Selecione a turma</option>
+                                <option value="1A">1A</option>
+                                <option value="2B">2B</option>
+                                <option value="3C">3C</option>
+                            </select>
+                            <button type="button" class="btn btn-outline-primary add-btn" data-bs-toggle="modal"
+                                data-bs-target="#modalTurma">
+                                <i class="bi bi-plus-lg"></i> Nova
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Plano</label>
+                        <div class="input-group">
+                            <select class="form-select" id="plano">
+                                <option selected disabled>Selecione o plano</option>
+                                <option value="Plano 1">Plano Básico</option>
+                                <option value="Plano 2">Plano Intermediário</option>
+                                <option value="Plano 3">Plano Avançado</option>
+                            </select>
+                            <button type="button" class="btn btn-outline-primary add-btn" data-bs-toggle="modal"
+                                data-bs-target="#modalPlano">
+                                <i class="bi bi-plus-lg"></i> Novo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ID Defense e Observações -->
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <label class="form-label">ID Defense</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                            <input type="text" class="form-control" id="codedefense" placeholder="Gerado automaticamente" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="form-label">Observações</label>
+                        <textarea class="form-control" id="observacoes" rows="2" placeholder="Informações adicionais"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Botões -->
+                <div class="d-flex justify-content-end gap-3">
+                    <button type="reset" class="btn btn-outline-secondary btn-custom">
+                        <i class="bi bi-x-lg"></i> Limpar
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-custom">
+                        <i class="bi bi-save"></i> Cadastrar Aluno
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Cadastro de Aluno -->
+    <div class="modal fade" id="modalAluno" tabindex="-1" aria-labelledby="modalAlunoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-person-plus"></i> Novo Aluno
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formCadastroAluno">
+                        <div class="mb-3">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="novoAluno" placeholder="Digite o nome completo" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="adicionarAluno()">
+                        <i class="bi bi-save"></i> Salvar
                     </button>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="dataNascimento" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="dataNascimento">
-            </div>
-            <div class="mb-3">
-                <label for="cep" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" onblur="buscarEndereco()">
-            </div>
-            <div class="mb-3">
-                <label for="endereco" class="form-label">Endereço</label>
-                <input type="text" class="form-control" id="endereco" placeholder="Endereço" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="numero" class="form-label">Número</label>
-                <input type="text" class="form-control" id="numero" placeholder="Digite o número">
-            </div>
-            <div class="mb-3">
-                <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="bairro" placeholder="Bairro" readonly>
-            </div>
-
-            <div class="mb-3">
-                <label for="dataInicialContrato" class="form-label">Data Inicial do Contrato</label>
-                <input type="date" class="form-control" id="dataInicialContrato">
-            </div>
-
-            <div class="mb-3">
-                <label for="turma" class="form-label">Turma</label>
-                <div class="input-group">
-                    <select class="form-select" id="turma">
-                        <option selected>Selecione a turma</option>
-                        <option value="1A">1A</option>
-                        <option value="2B">2B</option>
-                        <option value="3C">3C</option>
-                    </select>
-                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                        data-bs-target="#modalTurma">+</button>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="plano" class="form-label">Plano</label>
-                <div class="input-group">
-                    <select class="form-select" id="plano">
-                        <option selected>Selecione a turma</option>
-                        <option value="Plano 1">Plano 1</option>
-                        <option value="Plano 2">Plano 2</option>
-                        <option value="Plano 3">Plano 3</option>
-                    </select>
-                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                        data-bs-target="#modalTurma">+</button>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="observacoes" class="form-label">Observações</label>
-                <textarea class="form-control" id="observacoes" rows="3"
-                    placeholder="Digite alguma observação"></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">ID Defense:</label>
-                <input type="text" class="form-control" id="codedefense" placeholder="ID Gerado ao clicar em Cadastrar" readonly>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
+        </div>
     </div>
 
-    <!-- Modal de Cadastro de Turma -->
+    <!-- Modal para Cadastro de Turma -->
     <div class="modal fade" id="modalTurma" tabindex="-1" aria-labelledby="modalTurmaLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTurmaLabel">Cadastro de Turma</h5>
+                    <h5 class="modal-title">
+                        <i class="bi bi-journal-plus"></i> Nova Turma
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
-                    <label for="novaTurma" class="form-label">Nome da Turma</label>
-                    <input type="text" class="form-control" id="novaTurma" placeholder="Digite o nome da nova turma">
+                    <form id="formCadastroTurma">
+                        <div class="mb-3">
+                            <label class="form-label">Nome da Turma</label>
+                            <input type="text" class="form-control" id="novaTurma" placeholder="Ex: Turma Avançada" required>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="adicionarTurma()">Salvar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="adicionarTurma()">
+                        <i class="bi bi-save"></i> Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Cadastro de Plano -->
+    <div class="modal fade" id="modalPlano" tabindex="-1" aria-labelledby="modalPlanoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-file-earmark-plus"></i> Novo Plano
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formCadastroPlano">
+                        <div class="mb-3">
+                            <label class="form-label">Nome do Plano</label>
+                            <input type="text" class="form-control" id="novoPlano" placeholder="Ex: Plano Premium" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="adicionarPlano()">
+                        <i class="bi bi-save"></i> Salvar
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white mt-5">
-        <div class="container py-4">
-            <div class="row align-items-center">
-                <!-- Logo -->
-                <div class="col-md-4 text-center text-md-start">
-                    <img src="DEFENSE-INSTITUTO.png" alt="Instituto Defense" height="50">
-                    <p class="mb-0 mt-2">Todos os direitos reservados &copy; 2025</p>
-                </div>
+    <div id="footer-container"></div>
 
-                <!-- Contato -->
-                <div class="col-md-4 text-center">
-                    <h5>📞 Contato</h5>
-                    <p class="mb-1"><i class="fas fa-envelope"></i> atendimento@institutodefense.com.br</p>
-                    <p class="mb-1"><i class="fas fa-phone"></i> (11) 97461-4356</p>
-                    <p class="mb-0"><i class="fas fa-map-marker-alt"></i> R. João Makiyama, 186 - SP</p>
-                </div>
-
-                <!-- Redes Sociais -->
-                <div class="col-md-4 text-center text-md-end">
-                    <h5>🌐 Redes Sociai s</h5>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i> Facebook</a>
-                    <a href="#" class="text-white"><i class="fab fa-twitter"></i> Twitter</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        function adicionarAluno() {
+            let novoAluno = document.getElementById('novoAluno').value;
+            if (novoAluno) {
+                let selectAluno = document.getElementById('aluno');
+                let option = document.createElement('option');
+                option.text = novoAluno;
+                option.value = novoAluno;
+                selectAluno.add(option);
+                selectAluno.value = novoAluno;
+                document.getElementById('novoAluno').value = '';
+                let modal = bootstrap.Modal.getInstance(document.getElementById('modalAluno'));
+                modal.hide();
+            }
+        }
+
         function adicionarTurma() {
             let novaTurma = document.getElementById('novaTurma').value;
             if (novaTurma) {
@@ -213,9 +349,32 @@
                 modal.hide();
             }
         }
+
+        function adicionarPlano() {
+            let novoPlano = document.getElementById('novoPlano').value;
+            if (novoPlano) {
+                let selectPlano = document.getElementById('plano');
+                let option = document.createElement('option');
+                option.text = novoPlano;
+                option.value = novoPlano;
+                selectPlano.add(option);
+                selectPlano.value = novoPlano;
+                document.getElementById('novoPlano').value = '';
+                let modal = bootstrap.Modal.getInstance(document.getElementById('modalPlano'));
+                modal.hide();
+            }
+        }
+
+        // Simulação de busca de CEP
+        document.getElementById('btnBuscarCep').addEventListener('click', buscarEndereco);
+        
+        function buscarEndereco() {
+            // Aqui viria a lógica para buscar CEP
+            document.getElementById('endereco').value = "Rua João Makiyama";
+            document.getElementById('bairro').value = "Centro";
+            document.getElementById('cidade').value = "São Paulo";
+            document.getElementById('uf').value = "SP";
+        }
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

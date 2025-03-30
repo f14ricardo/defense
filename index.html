@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard - Projeto Defense</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/loadNavbarFooter.js"></script>
     <style>
@@ -13,6 +14,7 @@
             background-color: #f8f9fa;
         }
 
+        /* ESTILO ORIGINAL DOS CARDS (MANTIDO) */
         .card {
             transition: transform 0.2s ease-in-out;
             border-radius: 12px;
@@ -31,6 +33,64 @@
             text-align: center;
             display: block;
         }
+        
+        .card-title i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #0d6efd;
+        }
+        
+        .btn-danger .card-title i {
+            color: #dc3545;
+        }
+        
+        .btn-success .card-title i {
+            color: #198754;
+        }
+        
+        .btn-warning .card-title i {
+            color: #ffc107;
+        }
+
+        /* NOVO ESTILO PARA OS CABEÇALHOS DAS SEÇÕES */
+        .section-title {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 30px;
+            width: 6px;
+            background-color: #0d6efd;
+            border-radius: 3px;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+        }
+
+        /* Cores específicas para cada seção */
+        .turmas-title::before {
+            background-color: #dc3545;
+        }
+
+        .vendas-title::before {
+            background-color: #198754;
+        }
+
+        .relatorios-title::before {
+            background-color: #ffc107;
+        }
     </style>
 </head>
 
@@ -47,12 +107,12 @@
         </div>
 
         <!-- Sessão Cadastro -->
-        <h4 class="mb-3">📝 Cadastro</h4>
+        <h4 class="section-title"><i class="bi bi-pencil-square"></i> Cadastro</h4>
         <div class="row g-4">
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">✏️ Pré-Cadastro</h5>
+                        <h5 class="card-title"><i class="bi bi-file-earmark-text"></i> Pré-Cadastro</h5>
                         <p class="card-text">Pré-Cadastro e registro inicial de Alunos.</p>
                         <a href="cadIniAlunos.html" class="btn btn-primary btn-custom">Acessar</a>
                     </div>
@@ -61,7 +121,7 @@
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">📋 Cadastro de Alunos</h5>
+                        <h5 class="card-title"><i class="bi bi-people-fill"></i> Cadastro de Alunos</h5>
                         <p class="card-text">Gerencie os dados dos alunos cadastrados.</p>
                         <a href="cadAlunos.html" class="btn btn-primary btn-custom">Acessar</a>
                     </div>
@@ -70,7 +130,7 @@
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">📦 Cadastro de Produtos</h5>
+                        <h5 class="card-title"><i class="bi bi-box-seam"></i> Cadastro de Produtos</h5>
                         <p class="card-text">Gerencie os produtos disponíveis no estoque.</p>
                         <a href="cadProdutos.html" class="btn btn-primary btn-custom">Acessar</a>
                     </div>
@@ -79,7 +139,7 @@
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">👨‍💼 Consultor de Vendas</h5>
+                        <h5 class="card-title"><i class="bi bi-person-badge"></i> Consultor de Vendas</h5>
                         <p class="card-text">Cadastre e edite vendedores do sistema.</p>
                         <a href="cadVendedores.html" class="btn btn-primary btn-custom">Acessar</a>
                     </div>
@@ -87,16 +147,15 @@
             </div>
         </div>
 
-
         <hr>
 
         <!-- Sessão Turmas -->
-        <h4 class="mb-3">🏫 Turmas</h4>
+        <h4 class="section-title turmas-title"><i class="bi bi-building"></i> Turmas</h4>
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">🏫 Cadastro de Turmas</h5>
+                        <h5 class="card-title"><i class="bi bi-journal-bookmark"></i> Cadastro de Turmas</h5>
                         <p class="card-text">Gerencie as turmas e seus respectivos alunos.</p>
                         <a href="cadTurmas.html" class="btn btn-danger btn-custom">Acessar</a>
                     </div>
@@ -105,7 +164,7 @@
             <div class="col-md-4">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">📌 Chamada de Alunos</h5>
+                        <h5 class="card-title"><i class="bi bi-clipboard-check"></i> Chamada de Alunos</h5>
                         <p class="card-text">Registre a presença dos alunos em cada aula.</p>
                         <a href="#" class="btn btn-danger btn-custom">Acessar</a>
                     </div>
@@ -114,8 +173,8 @@
             <div class="col-md-4">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">📑 Relatório de Inadimplentes</h5>
-                        <p class="card-text">Consulte alunos com mensalidades pendentes.</p>
+                        <h5 class="card-title"><i class="bi bi-file-earmark-excel"></i> Relatório de Inadimplentes</h5>
+                        <p class="card-text">Alunos com mensalidades pendentes.</p>
                         <a href="#" class="btn btn-danger btn-custom">Acessar</a>
                     </div>
                 </div>
@@ -125,12 +184,12 @@
         <hr>
 
         <!-- Sessão Vendas -->
-        <h4 class="mb-3">💰 Vendas</h4>
+        <h4 class="section-title vendas-title"><i class="bi bi-cash-stack"></i> Vendas</h4>
         <div class="row g-4">
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">📦 Vendas de Produtos</h5>
+                        <h5 class="card-title"><i class="bi bi-cart-check"></i> Vendas de Produtos</h5>
                         <p class="card-text">Acompanhe o desempenho das vendas de produtos.</p>
                         <a href="#" class="btn btn-success btn-custom">Acessar</a>
                     </div>
@@ -139,7 +198,7 @@
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">🛠️ Vendas de Serviços</h5>
+                        <h5 class="card-title"><i class="bi bi-tools"></i> Vendas de Serviços</h5>
                         <p class="card-text">Acompanhe o desempenho das vendas de serviços.</p>
                         <a href="#" class="btn btn-success btn-custom">Acessar</a>
                     </div>
@@ -148,7 +207,7 @@
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">💎 Venda Especial</h5>
+                        <h5 class="card-title"><i class="bi bi-gem"></i> Venda Especial</h5>
                         <p class="card-text">Acompanhe as vendas excepcionais ou promocionais.</p>
                         <a href="#" class="btn btn-success btn-custom">Acessar</a>
                     </div>
@@ -157,7 +216,7 @@
             <div class="col-md-3">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">💰 Fechamento de Caixa</h5>
+                        <h5 class="card-title"><i class="bi bi-cash-coin"></i> Fechamento de Caixa</h5>
                         <p class="card-text">Gerencie o fechamento diário do caixa.</p>
                         <a href="#" class="btn btn-success btn-custom">Acessar</a>
                     </div>
@@ -165,17 +224,15 @@
             </div>
         </div>
 
-
-
         <hr>
 
         <!-- Sessão Relatórios -->
-        <h4 class="mb-3">📑 Relatórios</h4>
+        <h4 class="section-title relatorios-title"><i class="bi bi-file-earmark-bar-graph"></i> Relatórios</h4>
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">📄 Comissões de Vendas</h5>
+                        <h5 class="card-title"><i class="bi bi-graph-up-arrow"></i> Comissões de Vendas</h5>
                         <p class="card-text">Relatório de comissões detalhados do sistema.</p>
                         <a href="#" class="btn btn-warning btn-custom">Acessar</a>
                     </div>
@@ -184,7 +241,7 @@
             <div class="col-md-6">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title">📄 Relatórios de Alunos</h5>
+                        <h5 class="card-title"><i class="bi bi-file-earmark-person"></i> Relatórios de Alunos</h5>
                         <p class="card-text">Relatório de Relação Geral do Aluno.</p>
                         <a href="#" class="btn btn-warning btn-custom">Acessar</a>
                     </div>

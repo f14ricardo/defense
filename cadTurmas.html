@@ -3,48 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Turmas</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Cadastro de Turmas - Projeto Defense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="js/loadNavbarFooter.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 30px;
+            width: 6px;
+            background-color: #dc3545;
+            border-radius: 3px;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+            color: #dc3545;
+        }
+        
+        .btn-custom {
+            font-weight: 500;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+    </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <div id="navbar-container"></div>
 
-    <div class="container">
-        <h2 class="mt-5">Cadastro de Turmas</h2>
+<div class="container">
+    <div class="form-section">
+        <h3 class="section-title">
+            <i class="bi bi-journal-bookmark"></i> Cadastro de Turmas
+        </h3>
+        
         <form>
-            <div class="form-group">
-                <label for="nomeTurma">Nome da Turma</label>
-                <input type="text" class="form-control" id="nomeTurma" placeholder="Digite o nome da turma">
+            <!-- Nome da Turma -->
+            <div class="mb-4">
+                <label for="nomeTurma" class="form-label">Nome da Turma</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="nomeTurma" placeholder="Ex: Turma de Jiu-Jitsu Avançado">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="periodo">Período</label>
-                <select class="form-control" id="periodo">
-                    <option>Selecione o período</option>
-                    <option>Manhã</option>
-                    <option>Tarde</option>
-                    <option>Noite</option>
-                </select>
+            
+            <!-- Período e Sala -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="periodo" class="form-label">Período</label>
+                    <select class="form-select" id="periodo">
+                        <option selected disabled>Selecione o período</option>
+                        <option>Manhã (07:00 - 12:00)</option>
+                        <option>Tarde (13:00 - 18:00)</option>
+                        <option>Noite (19:00 - 22:00)</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="sala" class="form-label">Sala</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-door-open"></i></span>
+                        <input type="text" class="form-control" id="sala" placeholder="Ex: Sala 05">
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="sala">Sala</label>
-                <input type="text" class="form-control" id="sala" placeholder="Digite o número da sala">
+            
+            <!-- Professor Responsável -->
+            <div class="mb-4">
+                <label for="professor" class="form-label">Professor Responsável</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-video3"></i></span>
+                    <input type="text" class="form-control" id="professor" placeholder="Digite o nome do professor">
+                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#modalProfessor">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="professor">Professor Responsável</label>
-                <input type="text" class="form-control" id="professor" placeholder="Digite o nome do professor">
+            
+            <!-- Dias da Semana -->
+            <div class="mb-4">
+                <label class="form-label">Dias de Aula</label>
+                <div class="d-flex flex-wrap gap-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="segunda">
+                        <label class="form-check-label" for="segunda">Segunda</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terca">
+                        <label class="form-check-label" for="terca">Terça</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="quarta">
+                        <label class="form-check-label" for="quarta">Quarta</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="quinta">
+                        <label class="form-check-label" for="quinta">Quinta</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sexta">
+                        <label class="form-check-label" for="sexta">Sexta</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sabado">
+                        <label class="form-check-label" for="sabado">Sábado</label>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            
+            <!-- Observações -->
+            <div class="mb-4">
+                <label for="observacoes" class="form-label">Observações</label>
+                <textarea class="form-control" id="observacoes" rows="3" placeholder="Informações adicionais sobre a turma"></textarea>
+            </div>
+            
+            <!-- Botões -->
+            <div class="d-flex justify-content-end gap-3">
+                <button type="reset" class="btn btn-outline-danger btn-custom">
+                    <i class="bi bi-x-lg"></i> Limpar
+                </button>
+                <button type="submit" class="btn btn-danger btn-custom">
+                    <i class="bi bi-save"></i> Cadastrar Turma
+                </button>
+            </div>
         </form>
     </div>
+</div>
+
+<!-- Modal para Buscar Professor -->
+<div class="modal fade" id="modalProfessor" tabindex="-1" aria-labelledby="modalProfessorLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="bi bi-search"></i> Buscar Professor
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Digite o nome do professor">
+                        <button class="btn btn-danger" type="button">
+                            <i class="bi bi-search"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Modalidade</th>
+                                <th>Horário</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Carlos Silva</td>
+                                <td>Jiu-Jitsu</td>
+                                <td>Seg/Qua 19h</td>
+                                <td><button class="btn btn-sm btn-outline-danger">Selecionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Ana Oliveira</td>
+                                <td>Muay Thai</td>
+                                <td>Ter/Qui 20h</td>
+                                <td><button class="btn btn-sm btn-outline-danger">Selecionar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-lg"></i> Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Footer -->
 <div id="footer-container"></div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
