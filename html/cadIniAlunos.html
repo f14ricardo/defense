@@ -1,224 +1,211 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pré-Cadastro - Projeto Defense</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <script src="../js/loadNavbarFooter.js"></script>
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        
-        .form-section {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .section-title {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 25px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-        
-        .section-title::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 30px;
-            width: 6px;
-            background-color: #0d6efd;
-            border-radius: 3px;
-        }
-        
-        .section-title i {
-            margin-right: 10px;
-            font-size: 1.4rem;
-            vertical-align: middle;
-            color: #0d6efd;
-        }
-        
-        .btn-custom {
-            font-weight: 500;
-            border-radius: 8px;
-            padding: 8px 16px;
-        }
-        
-        .add-btn {
-            border-radius: 0 8px 8px 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pré-Cadastro - Projeto Defense</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { background-color: #f8f9fa; }
+    .form-section {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 30px;
+      width: 6px;
+      background-color: #0d6efd;
+      border-radius: 3px;
+    }
+    .section-title i {
+      margin-right: 10px;
+      font-size: 1.4rem;
+      vertical-align: middle;
+      color: #0d6efd;
+    }
+    .btn-custom {
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 8px 16px;
+    }
+    .add-btn {
+      border-radius: 0 8px 8px 0;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Navbar -->
-    <div id="navbar-container"></div>
+  <div class="container mt-4">
+    <div class="form-section">
+      <h3 class="section-title"><i class="bi bi-file-earmark-text"></i> Pré-Cadastro de Alunos</h3>
+      <form id="formCadastroAluno">
 
-    <!-- Cadastro Inicial de Alunos -->
-    <div class="container mt-4">
-        <div class="form-section">
-            <h3 class="section-title">
-                <i class="bi bi-file-earmark-text"></i> Pré-Cadastro de Alunos
-            </h3>
-            
-            <form>
-                <!-- Vendedor -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Vendedor</label>
-                    <div class="input-group">
-                        <select class="form-select" id="vendedor">
-                            <option>Selecione um vendedor</option>
-                            <option>Vendedor 1</option>
-                            <option>Vendedor 2</option>
-                            <option>Vendedor 3</option>
-                        </select>
-                        <button type="button" class="btn btn-outline-primary add-btn" data-bs-toggle="modal"
-                            data-bs-target="#modalCadastroVendedor">
-                            <i class="bi bi-plus-lg"></i> Novo
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Dados Pessoais -->
-                <div class="row mb-4">
-                    <div class="col-md-8 mb-3 mb-md-0">
-                        <label class="form-label fw-semibold">Nome Completo</label>
-                        <input type="text" class="form-control" placeholder="Digite o nome completo">
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label fw-semibold">Data do Cadastro</label>
-                        <input type="date" class="form-control">
-                    </div>
-                </div>
-                
-                <!-- Modalidade -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Modalidade</label>
-                    <div class="input-group">
-                        <select class="form-select" id="modalidade">
-                            <option>Selecione uma modalidade</option>
-                            <option>Jiu-Jitsu</option>
-                            <option>Muay Thai</option>
-                            <option>Boxe</option>
-                            <option>Karatê</option>
-                        </select>
-                        <button type="button" class="btn btn-outline-primary add-btn" data-bs-toggle="modal"
-                            data-bs-target="#modalCadastroLuta">
-                            <i class="bi bi-plus-lg"></i> Nova
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Motivação -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Motivação da Visita</label>
-                    <div class="input-group">
-                        <select class="form-select" id="motivacao">
-                            <option>Selecione a motivação</option>
-                            <option>Indicação de Amigos</option>
-                            <option>Parentes</option>
-                            <option>Redes Sociais</option>
-                            <option>Propaganda</option>
-                            <option>Outros</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <!-- Observações -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Observações</label>
-                    <textarea class="form-control" rows="4" placeholder="Informações adicionais"></textarea>
-                </div>
-                
-                <!-- Botões -->
-                <div class="d-flex justify-content-end gap-3">
-                    <button type="reset" class="btn btn-outline-secondary btn-custom">
-                        <i class="bi bi-x-lg"></i> Limpar
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-custom">
-                        <i class="bi bi-save"></i> Cadastrar
-                    </button>
-                </div>
-            </form>
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Vendedor Responsável</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+            <select class="form-select" id="vendedor" required></select>
+          </div>
         </div>
-    </div>
 
-    <!-- Modal para Cadastro de Modalidade -->
-    <div class="modal fade" id="modalCadastroLuta" tabindex="-1" aria-labelledby="modalCadastroLutaLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="bi bi-plus-circle"></i> Nova Modalidade
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formCadastroLuta">
-                        <div class="mb-3">
-                            <label class="form-label">Nome da Modalidade</label>
-                            <input type="text" class="form-control" id="nomeLuta" placeholder="Ex: Jiu-Jitsu" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-lg"></i> Cancelar
-                    </button>
-                    <button type="button" class="btn btn-primary" id="btnSalvarLuta">
-                        <i class="bi bi-save"></i> Salvar
-                    </button>
-                </div>
+        <div class="row mb-4">
+          <div class="col-md-8 mb-3 mb-md-0">
+            <label class="form-label fw-semibold">Nome Completo</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person"></i></span>
+              <input type="text" class="form-control" id="nome" required placeholder="Digite o nome completo" />
             </div>
-        </div>
-    </div>
-
-    <!-- Modal para Cadastro de Vendedor -->
-    <div class="modal fade" id="modalCadastroVendedor" tabindex="-1" aria-labelledby="modalVendedorLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="bi bi-person-plus"></i> Novo Vendedor
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formCadastroVendedor">
-                        <div class="mb-3">
-                            <label class="form-label">Nome do Vendedor</label>
-                            <input type="text" class="form-control" id="nomeVendedor" placeholder="Ex: João Silva" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-lg"></i> Cancelar
-                    </button>
-                    <button type="button" class="btn btn-primary" id="btnVendedor">
-                        <i class="bi bi-save"></i> Salvar
-                    </button>
-                </div>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">CPF</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+              <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" />
             </div>
+          </div>
         </div>
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Telefone</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+              <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">E-mail</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Data do Cadastro</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+            <input type="date" class="form-control" id="dataCadastro" required />
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Modalidade</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-list-check"></i></span>
+            <select class="form-select" id="modalidade" required></select>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Motivação da Visita</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-chat-dots"></i></span>
+            <select class="form-select" id="motivacao" required>
+              <option value="">Selecione</option>
+              <option>Indicação</option>
+              <option>Redes Sociais</option>
+              <option>Parentes</option>
+              <option>Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Observações</label>
+          <textarea class="form-control" id="obs" rows="3" placeholder="Informações adicionais"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+          <button type="reset" class="btn btn-outline-secondary btn-custom">
+            <i class="bi bi-x-lg"></i> Limpar
+          </button>
+          <button type="submit" class="btn btn-primary btn-custom">
+            <i class="bi bi-save"></i> Cadastrar
+          </button>
+        </div>
+
+      </form>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const fluxoListarVendedores = "URL_FLUXO_LISTAR_VENDEDORES";
+    const fluxoListarModalidades = "URL_FLUXO_LISTAR_MODALIDADES";
+    const fluxoCadastrarAluno = "URL_FLUXO_CADASTRAR_ALUNO";
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    async function carregarVendedores() {
+      try {
+        const res = await fetch(fluxoListarVendedores);
+        const data = await res.json();
+        $('#vendedor').empty().append('<option value="">Selecione um vendedor</option>');
+        data.forEach(v => {
+          const texto = `${v.Nome} - ${v.CPF}`;
+          const valor = v.CPF;
+          $('#vendedor').append(`<option value="${valor}">${texto}</option>`);
+        });
+      } catch {
+        alert("Erro ao carregar vendedores");
+      }
+    }
+
+    async function carregarModalidades() {
+      try {
+        const res = await fetch(fluxoListarModalidades);
+        const data = await res.json();
+        $('#modalidade').empty().append('<option value="">Selecione a modalidade</option>');
+        data.forEach(m => {
+          $('#modalidade').append(`<option value="${m.Nome}">${m.Nome}</option>`);
+        });
+      } catch {
+        alert("Erro ao carregar modalidades");
+      }
+    }
+
+    $('#formCadastroAluno').on('submit', async function (e) {
+      e.preventDefault();
+      const dados = {
+        vendedor: $('#vendedor').val(),
+        nome: $('#nome').val(),
+        cpf: $('#cpf').val(),
+        telefone: $('#telefone').val(),
+        email: $('#email').val(),
+        dataCadastro: $('#dataCadastro').val(),
+        modalidade: $('#modalidade').val(),
+        motivacao: $('#motivacao').val(),
+        obs: $('#obs').val()
+      };
+      await fetch(fluxoCadastrarAluno, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados)
+      });
+      alert("Cadastro realizado com sucesso!");
+      this.reset();
+    });
+
+    $(document).ready(() => {
+      carregarVendedores();
+      carregarModalidades();
+    });
+  </script>
 </body>
-
 </html>
