@@ -86,9 +86,6 @@
                     <label for="periodo" class="form-label">Período</label>
                     <select class="form-select" id="periodo">
                         <option selected disabled>Selecione o período</option>
-                        <option>Manhã (07:00 - 12:00)</option>
-                        <option>Tarde (13:00 - 18:00)</option>
-                        <option>Noite (19:00 - 22:00)</option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -182,7 +179,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="tabela-professores">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -192,18 +189,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Carlos Silva</td>
-                                <td>Jiu-Jitsu</td>
-                                <td>Seg/Qua 19h</td>
-                                <td><button class="btn btn-sm btn-outline-danger">Selecionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Ana Oliveira</td>
-                                <td>Muay Thai</td>
-                                <td>Ter/Qui 20h</td>
-                                <td><button class="btn btn-sm btn-outline-danger">Selecionar</button></td>
-                            </tr>
+                            <!-- Placeholder para os dados dos professores -->
                         </tbody>
                     </table>
                 </div>
@@ -221,5 +207,121 @@
 <div id="footer-container"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function obterDiasSelecionados() {
+    const dias = [
+        { id: 'segunda', label: 'Segunda' },
+        { id: 'terca', label: 'Terça' },
+        { id: 'quarta', label: 'Quarta' },
+        { id: 'quinta', label: 'Quinta' },
+        { id: 'sexta', label: 'Sexta' },
+        { id: 'sabado', label: 'Sábado' }
+    ];
+
+    return dias
+        .filter(d => document.getElementById(d.id).checked)
+        .map(d => d.label)
+        .join(', ');
+}
+
+document.querySelector('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const dados = {
+        nomeTurma: document.getElementById('nomeTurma')?.value || '',
+        periodo: document.getElementById('periodo')?.value || '',
+        sala: document.getElementById('sala')?.value || '',
+        professor: document.getElementById('professor')?.value || '',
+        diasDeAula: obterDiasSelecionados(),
+        observacoes: document.getElementById('observacoes')?.value || ''
+    };
+
+    console.log("📤 Enviando os seguintes dados:", dados);
+
+    try {
+        const response = await fetch('https://prod-114.westus.logic.azure.com:443/workflows/9f4abf6ea2c549abbe2290f257218326/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=E8PJPYHAVPYGFz2Fqd_jRyQ0PlDQ_F7br_AsEYyDrXY', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        });
+
+        if (response.ok) {
+            alert('✅ Turma cadastrada com sucesso!');
+        } else {
+            const texto = await response.text();
+            alert('❌ Erro ao cadastrar turma. Detalhes: ' + texto);
+        }
+    } catch (err) {
+        console.error('❌ Erro inesperado:', err);
+        alert('Erro ao enviar os dados.');
+    }
+});
+</script>
+
+
+<script>
+// Função para carregar os períodos dinamicamente
+async function carregarPeriodos() {
+    try {
+        const res = await fetch("https://prod-116.westus.logic.azure.com:443/workflows/9b399cb8f7c74742a3c977776b858af4/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Sxd8VuKvEAbXAdCUjSzx6mGFIck6CgsGZ_d5_7I9mIM", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({})
+        });
+        const data = await res.json();
+        const select = document.getElementById("periodo");
+        select.innerHTML = '<option selected disabled>Selecione o período</option>';
+        data.periodos.forEach(p => {
+            const valor = p["Períodos"] || p["Periodos"];
+            if (valor) select.innerHTML += `<option>${valor}</option>`;
+        });
+    } catch (err) {
+        console.error("Erro ao carregar períodos:", err);
+    }
+}
+
+// Função para carregar os professores no modal
+async function carregarProfessores() {
+    try {
+        const res = await fetch("https://prod-122.westus.logic.azure.com:443/workflows/4edf9c18b44a4a0b8f1fedfa764da40f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZwJmaZQT7StWVfs2MwdO1rt1widNsntCgGNJl_FB31k", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({})
+        });
+        const data = await res.json();
+        const tbody = document.querySelector("#tabela-professores tbody");
+        tbody.innerHTML = "";
+        data.professores.forEach(p => {
+            const linha = `
+                <tr>
+                    <td>${p["Nome Professor"]}</td>
+                    <td>${p["CPF Professor"] || "-"}</td>
+                    <td>${p["Modalidade"] || "-"}</td>
+                    <td>${p["Horário"] || "-"}</td>
+                    <td><button class='btn btn-sm btn-outline-danger' onclick="selecionarProfessor('${p["Nome Professor"]}')">Selecionar</button></td>
+                </tr>
+            `;
+            tbody.innerHTML += linha;
+        });
+    } catch (err) {
+        console.error("Erro ao carregar professores:", err);
+    }
+}
+
+// Forçar escolha do professor
+function selecionarProfessor(nome) {
+    document.getElementById("professor").value = nome;
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("modalProfessor"));
+    modal.hide();
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+    carregarPeriodos();
+    carregarProfessores();
+    document.getElementById("professor").readOnly = true;
+});
+</script>
+
 </body>
 </html>
