@@ -5,14 +5,17 @@
   * Description: Load Navbar and Footer from external files
   */
 
-document.addEventListener("DOMContentLoaded", function() {
-    fetch("../html/navbar.html")
+document.addEventListener("DOMContentLoaded", function () {
+    const path = window.location.pathname;
+    const base = path.includes("/html/") ? "../" : "./";
+
+    fetch(base + "html/navbar.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-container").innerHTML = data;
         });
 
-    fetch("../html/footer.html")
+    fetch(base + "html/footer.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("footer-container").innerHTML = data;
