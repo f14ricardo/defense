@@ -145,17 +145,17 @@
                 </div>
 
                 <div class="d-flex justify-content-between mt-4">
-                    <button type="button" class="btn btn-outline-secondary btn-custom">
+                    <button type="button" class="btn btn-outline-secondary btn-custom" onclick="window.location.href='https://f14ricardo.github.io/defense/'">
                         <i class="bi bi-arrow-left"></i> Voltar
                     </button>
-                <div class="d-flex gap-3">
-                    <button type="reset" class="btn btn-outline-secondary btn-custom">
-                        <i class="bi bi-x-lg"></i> Limpar
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-custom">
-                        <i class="bi bi-save"></i> Cadastrar
-                    </button>
-                </div>
+                    <div class="d-flex gap-3">
+                        <button type="reset" class="btn btn-outline-secondary btn-custom">
+                            <i class="bi bi-x-lg"></i> Limpar
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-custom">
+                            <i class="bi bi-save"></i> Cadastrar
+                        </button>
+                    </div>
                 </div>
 
             </form>
@@ -177,15 +177,17 @@
                     body: JSON.stringify({})
                 });
                 const data = await res.json();
+                console.log(data);
                 $('#vendedor').empty().append('<option value="">Selecione um vendedor</option>');
                 data.forEach(v => {
-                    const texto = `${v.Nome} - ${v.CPF}`;
-                    $('#vendedor').append(`<option value="${v.CPF}">${texto}</option>`);
+                    const texto = `${v["CPF"]} - ${v["Nome"]}`;
+                    $('#vendedor').append(`<option value="${v["CPF"]}">${texto}</option>`);
                 });
             } catch (err) {
                 console.error("Erro ao carregar vendedores:", err);
             }
         }
+
 
         async function carregarModalidades() {
             try {

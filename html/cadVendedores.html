@@ -1,17 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   Cadastro de Vendedores - Projeto Defense
-  </title>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet"/>
-  <style>
-   body {
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Cadastro de Vendedores - Projeto Defense
+    </title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        body {
             background-color: #f8f9fa;
         }
 
@@ -65,224 +65,246 @@
         .input-group-text {
             background-color: #f1f3f5;
         }
-  </style>
- </head>
- <body>
-  <div class="container">
-   <div class="form-section">
-    <h3 class="section-title">
-     <i class="bi bi-person-badge">
-     </i>
-     Cadastro de Vendedores
-    </h3>
-    <form id="formCadastro">
-     <!-- Dados Pessoais -->
-     <div class="row mb-4">
-      <div class="col-md-3 mb-3 mb-md-0">
-       <label class="form-label" for="cpf">
-        CPF
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-person-vcard">
-         </i>
-        </span>
-        <input class="form-control" id="cpf" placeholder="000.000.000-00" required="" type="text"/>
-       </div>
-      </div>
-      <div class="col-md-6 mb-3 mb-md-0">
-       <label class="form-label" for="nome">
-        Nome Completo
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-person-fill">
-         </i>
-        </span>
-        <input class="form-control" id="nome" placeholder="Digite o nome completo" required="" type="text"/>
-       </div>
-      </div>
-      <div class="col-md-3">
-       <label class="form-label" for="dataNascimento">
-        Data de Nascimento
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-calendar-date">
-         </i>
-        </span>
-        <input class="form-control" id="dataNascimento" required="" type="date"/>
-       </div>
-      </div>
-     </div>
-     <!-- Endereço (todos em uma linha) -->
-     <div class="row mb-4">
-      <div class="col-md-3 mb-3 mb-md-0">
-       <label class="form-label" for="cep">
-        CEP
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-postcard">
-         </i>
-        </span>
-        <input class="form-control" id="cep" placeholder="00000-000" type="text"/>
-       </div>
-      </div>
-      <div class="col-md-5 mb-3 mb-md-0">
-       <label class="form-label" for="endereco">
-        Endereço
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-geo-alt">
-         </i>
-        </span>
-        <input class="form-control" id="endereco" placeholder="Rua, Avenida, etc." type="text"/>
-       </div>
-      </div>
-      <div class="col-md-2 mb-3 mb-md-0">
-       <label class="form-label" for="numero">
-        Número
-       </label>
-       <input class="form-control" id="numero" placeholder="Nº" type="text"/>
-      </div>
-      <div class="col-md-2">
-       <label class="form-label" for="complemento">
-        Complemento
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-house-door">
-         </i>
-        </span>
-        <input class="form-control" id="complemento" placeholder="Apto, Bloco, etc." type="text"/>
-       </div>
-      </div>
-     </div>
-     <!-- Complemento -->
-     <div class="row mb-4">
-      <div class="col-md-5 mb-3 mb-md-0">
-       <label class="form-label" for="bairro">
-        Bairro
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-pin-map">
-         </i>
-        </span>
-        <input class="form-control" id="bairro" type="text"/>
-       </div>
-      </div>
-      <div class="col-md-5 mb-3 mb-md-0">
-       <label class="form-label" for="cidade">
-        Cidade
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-building">
-         </i>
-        </span>
-        <input class="form-control" id="cidade" type="text"/>
-       </div>
-      </div>
-      <div class="col-md-2">
-       <label class="form-label" for="uf">
-        UF
-       </label>
-       <select class="form-select" id="uf">
-        <option>
-         SP
-        </option>
-        <option>
-         RJ
-        </option>
-        <option>
-         MG
-        </option>
-        <option>
-         Outro
-        </option>
-       </select>
-      </div>
-     </div>
-     <!-- Contato e Categoria -->
-     <div class="row mb-4">
-      <div class="col-md-6 mb-3 mb-md-0">
-       <label class="form-label" for="telefone">
-        Telefone
-       </label>
-       <div class="input-group">
-        <span class="input-group-text">
-         <i class="bi bi-telephone">
-         </i>
-        </span>
-        <input class="form-control" id="telefone" placeholder="(00) 00000-0000" type="tel"/>
-       </div>
-      </div>
-      <div class="col-md-6">
-       <label class="form-label" for="categoria">
-        Categoria
-       </label>
-       <select class="form-select" id="categoria" required="">
-        <option disabled="" selected="">
-         Selecione a categoria
-        </option>
-        <option>
-         Administrador
-        </option>
-        <option>
-         Vendedor Sênior
-        </option>
-        <option>
-         Vendedor Pleno
-        </option>
-        <option>
-         Vendedor Júnior
-        </option>
-        <option>
-         Outros
-        </option>
-       </select>
-      </div>
-     </div>
-     <!-- Observações -->
-     <div class="mb-4">
-      <label class="form-label" for="observacoes">
-       Observações
-      </label>
-      <textarea class="form-control" id="observacoes" placeholder="Informações adicionais sobre o vendedor" rows="3"></textarea>
-     </div>
-     <!-- Botões -->
-     <div class="d-grid gap-3 d-md-flex justify-content-md-end">
-      <button class="btn btn-primary btn-custom" data-bs-target="#listarModal" data-bs-toggle="modal" type="button">
-       <i class="bi bi-list-ul">
-       </i>
-       Listar Vendedores
-      </button>
-      <button class="btn btn-outline-secondary btn-custom" type="reset">
-       <i class="bi bi-x-lg">
-       </i>
-       Limpar
-      </button>
-      <button class="btn btn-primary btn-custom" type="submit">
-       <i class="bi bi-save">
-       </i>
-       Cadastrar Vendedor
-      </button>
-     </div>
-    </form>
-   </div>
-  </div>
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js">
-  </script>
-  <script>
-   $(document).ready(function () {
+
+        .btn-outline-danger {
+            border-color: #dc3545;
+            color: #dc3545;
+            font-weight: 500;
+        }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-person-badge">
+                </i>
+                Cadastro de Vendedores
+            </h3>
+            <form id="formCadastro">
+                <!-- Dados Pessoais -->
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label class="form-label" for="cpf">
+                            CPF
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-person-vcard">
+                                </i>
+                            </span>
+                            <input class="form-control" id="cpf" placeholder="000.000.000-00" required="" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="form-label" for="nome">
+                            Nome Completo
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-person-fill">
+                                </i>
+                            </span>
+                            <input class="form-control" id="nome" placeholder="Digite o nome completo" required=""
+                                type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="dataNascimento">
+                            Data de Nascimento
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-calendar-date">
+                                </i>
+                            </span>
+                            <input class="form-control" id="dataNascimento" required="" type="date" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Endereço (todos em uma linha) -->
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label class="form-label" for="cep">
+                            CEP
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-postcard">
+                                </i>
+                            </span>
+                            <input class="form-control" id="cep" placeholder="00000-000" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3 mb-md-0">
+                        <label class="form-label" for="endereco">
+                            Endereço
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-geo-alt">
+                                </i>
+                            </span>
+                            <input class="form-control" id="endereco" placeholder="Rua, Avenida, etc." type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-3 mb-md-0">
+                        <label class="form-label" for="numero">
+                            Número
+                        </label>
+                        <input class="form-control" id="numero" placeholder="Nº" type="text" />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="complemento">
+                            Complemento
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-house-door">
+                                </i>
+                            </span>
+                            <input class="form-control" id="complemento" placeholder="Apto, Bloco, etc." type="text" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Complemento -->
+                <div class="row mb-4">
+                    <div class="col-md-5 mb-3 mb-md-0">
+                        <label class="form-label" for="bairro">
+                            Bairro
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-pin-map">
+                                </i>
+                            </span>
+                            <input class="form-control" id="bairro" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3 mb-md-0">
+                        <label class="form-label" for="cidade">
+                            Cidade
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-building">
+                                </i>
+                            </span>
+                            <input class="form-control" id="cidade" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="uf">
+                            UF
+                        </label>
+                        <select class="form-select" id="uf">
+                            <option>
+                                SP
+                            </option>
+                            <option>
+                                RJ
+                            </option>
+                            <option>
+                                MG
+                            </option>
+                            <option>
+                                Outro
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Contato e Categoria -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="form-label" for="telefone">
+                            Telefone
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-telephone">
+                                </i>
+                            </span>
+                            <input class="form-control" id="telefone" placeholder="(00) 00000-0000" type="tel" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="categoria">
+                            Categoria
+                        </label>
+                        <select class="form-select" id="categoria" required="">
+                            <option disabled="" selected="">
+                                Selecione a categoria
+                            </option>
+                            <option>
+                                Administrador
+                            </option>
+                            <option>
+                                Vendedor Sênior
+                            </option>
+                            <option>
+                                Vendedor Pleno
+                            </option>
+                            <option>
+                                Vendedor Júnior
+                            </option>
+                            <option>
+                                Outros
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Observações -->
+                <div class="mb-4">
+                    <label class="form-label" for="observacoes">
+                        Observações
+                    </label>
+                    <textarea class="form-control" id="observacoes"
+                        placeholder="Informações adicionais sobre o vendedor" rows="3"></textarea>
+                </div>
+                <!-- Botões -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" class="btn btn-outline-secondary btn-custom" onclick="window.location.href='https://f14ricardo.github.io/defense/'">
+                        <i class="bi bi-arrow-left"></i> Voltar
+                    </button>
+
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-end">
+                        <button class="btn btn-sm btn-outline-primary action-btn" data-bs-target="#listarModal"
+                            data-bs-toggle="modal" type="button">
+                            <i class="bi bi-list-ul">
+                            </i>
+                            Listar Vendedores
+                        </button>
+                        <button class="btn btn-outline-secondary btn-custom" type="reset">
+                            <i class="bi bi-x-lg">
+                            </i>
+                            Limpar
+                        </button>
+                        <button class="btn btn-primary btn-custom" type="submit">
+                            <i class="bi bi-save">
+                            </i>
+                            Cadastrar Vendedor
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
             $('#telefone').mask('(00) 00000-0000');
 
             $('#cep').on('blur', function () {
@@ -352,95 +374,90 @@
                     });
             });
         });
-  </script>
-  <!-- Modal de Lista de Vendedores -->
-  <div aria-hidden="true" aria-labelledby="listarModalLabel" class="modal fade" id="listarModal" tabindex="-1">
-   <div class="modal-dialog modal-xl modal-dialog-scrollable">
-    <div class="modal-content">
-     <div class="modal-header bg-primary text-white">
-      <h5 class="modal-title" id="listarModalLabel">
-       <i class="bi bi-people-fill">
-       </i>
-       Vendedores Cadastrados
-      </h5>
-      <button aria-label="Fechar" class="btn-close btn-close-white" data-bs-dismiss="modal" type="button">
-      </button>
-     </div>
-     <div class="modal-body">
-      <div class="table-responsive">
-       <table class="table table-bordered table-hover align-middle">
-        <thead class="table-light">
-         <tr>
-          <th>
-           CPF
-          </th>
-          <th>
-           Nome
-          </th>
-          <th>
-           Nascimento
-          </th>
-          <th>
-           Telefone
-          </th>
-          <th>
-           Categoria
-          </th>
-          <th>
-           Cidade
-          </th>
-          <th>
-           Complemento
-          </th>
-          <th>
-           Ações
-          </th>
-         </tr>
-        </thead>
-        <tbody id="tabelaVendedores">
-         <tr>
-          <td colspan="5">
-           Carregando...
-          </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
-     </div>
-     <div class="modal-footer">
-      <button class="btn btn-secondary" data-bs-dismiss="modal">
-       Fechar
-      </button>
-     </div>
+    </script>
+    <!-- Modal de Lista de Vendedores com visual estilo "Buscar Professor" -->
+    <div class="modal fade" id="listarModal" tabindex="-1" aria-labelledby="listarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content rounded-3 shadow-sm">
+                <!-- Cabeçalho personalizado -->
+                <div class="modal-header border-0 pt-4 pb-0">
+                    <h5 class="modal-title fw-semibold" id="listarModalLabel">
+                        <i class="bi bi-people-fill me-2"></i> Vendedores Cadastrados
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+
+                <!-- Corpo do modal com busca e tabela -->
+                <div class="modal-body pt-1">
+                    <!-- Campo de busca -->
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="inputBusca"
+                            placeholder="Digite o nome do vendedor...">
+                        <button class="btn btn-danger" onclick="filtrarTabela()">
+                            <i class="bi bi-search"></i> Buscar
+                        </button>
+                    </div>
+
+                    <!-- Tabela responsiva -->
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>CPF</th>
+                                    <th>Nome</th>
+                                    <th>Nascimento</th>
+                                    <th>Telefone</th>
+                                    <th>Categoria</th>
+                                    <th>Cidade</th>
+                                    <th>Complemento</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaVendedores">
+                                <tr>
+                                    <td colspan="8">⏳ Carregando...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Rodapé -->
+                <div class="modal-footer border-0 pt-0 pb-4">
+                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg"></i> Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-   </div>
-  </div>
-  <script>
-   const URL_LISTA_VENDEDORES = "https://prod-117.westus.logic.azure.com:443/workflows/bf5a1388d65444008b5069ea5a6b364b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=M471hZBEOUA_OFv076Vidtj5r_DpiNBOHhOP6qWSUEo";
 
-$('#listarModal').on('show.bs.modal', function () {
-    const tbody = document.getElementById('tabelaVendedores');
-    tbody.innerHTML = "<tr><td colspan='8'>⏳ Carregando...</td></tr>";
+    <script>
+        const URL_LISTA_VENDEDORES = "https://prod-117.westus.logic.azure.com:443/workflows/bf5a1388d65444008b5069ea5a6b364b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=M471hZBEOUA_OFv076Vidtj5r_DpiNBOHhOP6qWSUEo";
 
-    fetch(URL_LISTA_VENDEDORES, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({})
-    })
-    .then(res => res.json())
-    .then(data => {
-        const vendedores = data.vendedores || [];
+        $('#listarModal').on('show.bs.modal', function () {
+            const tbody = document.getElementById('tabelaVendedores');
+            tbody.innerHTML = "<tr><td colspan='8'>⏳ Carregando...</td></tr>";
 
-        if (vendedores.length === 0) {
-            tbody.innerHTML = "<tr><td colspan='8'>📭 Nenhum vendedor encontrado.</td></tr>";
-            return;
-        }
+            fetch(URL_LISTA_VENDEDORES, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({})
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const vendedores = data.vendedores || [];
 
-        tbody.innerHTML = "";
+                    if (vendedores.length === 0) {
+                        tbody.innerHTML = "<tr><td colspan='8'>📭 Nenhum vendedor encontrado.</td></tr>";
+                        return;
+                    }
 
-        vendedores.forEach((v, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
+                    tbody.innerHTML = "";
+
+                    vendedores.forEach((v, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
               <td>${v["CPF"] || '-'}</td>
               <td>${v["Nome Completo"] || '-'}</td>
               <td>${v["Data Nascimento"] || '-'}</td>
@@ -454,36 +471,47 @@ $('#listarModal').on('show.bs.modal', function () {
                 </button>
               </td>
             `;
-            tbody.appendChild(row);
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(err => {
+                    console.error("Erro ao listar:", err);
+                    tbody.innerHTML = "<tr><td colspan='8'>❌ Erro ao carregar vendedores.</td></tr>";
+                });
         });
-    })
-    .catch(err => {
-        console.error("Erro ao listar:", err);
-        tbody.innerHTML = "<tr><td colspan='8'>❌ Erro ao carregar vendedores.</td></tr>";
-    });
-});
-  </script>
-  <script>
-   function excluirVendedor(cpf) {
-    if (!confirm("Deseja realmente excluir este vendedor?")) return;
+    </script>
+    <script>
+        function filtrarTabela() {
+            const termo = document.getElementById("inputBusca").value.toLowerCase();
+            const linhas = document.querySelectorAll("#tabelaVendedores tr");
 
-    fetch("https://prod-142.westus.logic.azure.com:443/workflows/a9424a4417e248d98e28f940fac28636/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MYVffyIMWZiI1ngpRXUaBjPoJDwGKqlLYEiBtrDHjQc", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ cpf: cpf })
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert(data.mensagem || "✅ Vendedor excluído com sucesso!");
-        location.reload(); // recarrega a lista
-    })
-    .catch(err => {
-        console.error("Erro ao excluir:", err);
-        alert("❌ Erro ao excluir vendedor.");
-    });
-}
-  </script>
- </body>
+            linhas.forEach(linha => {
+                const nome = linha.cells[1]?.textContent.toLowerCase() || "";
+                linha.style.display = nome.includes(termo) ? "" : "none";
+            });
+        }
+
+        function excluirVendedor(cpf) {
+            if (!confirm("Deseja realmente excluir este vendedor?")) return;
+
+            fetch("https://prod-142.westus.logic.azure.com:443/workflows/a9424a4417e248d98e28f940fac28636/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MYVffyIMWZiI1ngpRXUaBjPoJDwGKqlLYEiBtrDHjQc", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ cpf: cpf })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.mensagem || "✅ Vendedor excluído com sucesso!");
+                    location.reload(); // recarrega a lista
+                })
+                .catch(err => {
+                    console.error("Erro ao excluir:", err);
+                    alert("❌ Erro ao excluir vendedor.");
+                });
+        }
+    </script>
+</body>
+
 </html>
