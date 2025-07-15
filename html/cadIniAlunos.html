@@ -1,211 +1,268 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pré-Cadastro - Projeto Defense</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    body { background-color: #f8f9fa; }
-    .form-section {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
-    .section-title {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 25px;
-      color: #2c3e50;
-      font-weight: 600;
-    }
-    .section-title::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 30px;
-      width: 6px;
-      background-color: #0d6efd;
-      border-radius: 3px;
-    }
-    .section-title i {
-      margin-right: 10px;
-      font-size: 1.4rem;
-      vertical-align: middle;
-      color: #0d6efd;
-    }
-    .btn-custom {
-      font-weight: 500;
-      border-radius: 8px;
-      padding: 8px 16px;
-    }
-    .add-btn {
-      border-radius: 0 8px 8px 0;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pré-Cadastro - Projeto Defense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .form-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 30px;
+            width: 6px;
+            background-color: #0d6efd;
+            border-radius: 3px;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+            color: #0d6efd;
+        }
+
+        .btn-custom {
+            font-weight: 500;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+
+        .add-btn {
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container mt-4">
-    <div class="form-section">
-      <h3 class="section-title"><i class="bi bi-file-earmark-text"></i> Pré-Cadastro de Alunos</h3>
-      <form id="formCadastroAluno">
+    <div class="container mt-4">
+        <div class="form-section">
+            <h3 class="section-title"><i class="bi bi-file-earmark-text"></i> Pré-Cadastro de Alunos</h3>
+            <form id="formCadastroAluno">
 
-        <div class="mb-4">
-          <label class="form-label fw-semibold">Vendedor Responsável</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
-            <select class="form-select" id="vendedor" required></select>
-          </div>
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Vendedor Responsável</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                        <select class="form-select" id="vendedor" required></select>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-8 mb-3 mb-md-0">
+                        <label class="form-label fw-semibold">Nome Completo</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" id="nome" required
+                                placeholder="Digite o nome completo" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">CPF</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+                            <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Telefone</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                            <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">E-mail</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Data do Cadastro</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        <input type="date" class="form-control" id="dataCadastro" required />
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Modalidade</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-list-check"></i></span>
+                        <select class="form-select" id="modalidade" required></select>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Motivação da Visita</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-chat-dots"></i></span>
+                        <select class="form-select" id="motivacao" required>
+                            <option value="">Selecione</option>
+                            <option>Indicação</option>
+                            <option>Redes Sociais</option>
+                            <option>Parentes</option>
+                            <option>Outros</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Observações</label>
+                    <textarea class="form-control" id="obs" rows="3" placeholder="Informações adicionais"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" class="btn btn-outline-secondary btn-custom">
+                        <i class="bi bi-arrow-left"></i> Voltar
+                    </button>
+                <div class="d-flex gap-3">
+                    <button type="reset" class="btn btn-outline-secondary btn-custom">
+                        <i class="bi bi-x-lg"></i> Limpar
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-custom">
+                        <i class="bi bi-save"></i> Cadastrar
+                    </button>
+                </div>
+                </div>
+
+            </form>
         </div>
-
-        <div class="row mb-4">
-          <div class="col-md-8 mb-3 mb-md-0">
-            <label class="form-label fw-semibold">Nome Completo</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-person"></i></span>
-              <input type="text" class="form-control" id="nome" required placeholder="Digite o nome completo" />
-            </div>
-          </div>
-          <div class="col-md-4">
-            <label class="form-label fw-semibold">CPF</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
-              <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" />
-            </div>
-          </div>
-        </div>
-
-        <div class="row mb-4">
-          <div class="col-md-6">
-            <label class="form-label fw-semibold">Telefone</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-              <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000" />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label fw-semibold">E-mail</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-              <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" />
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <label class="form-label fw-semibold">Data do Cadastro</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-            <input type="date" class="form-control" id="dataCadastro" required />
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <label class="form-label fw-semibold">Modalidade</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-list-check"></i></span>
-            <select class="form-select" id="modalidade" required></select>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <label class="form-label fw-semibold">Motivação da Visita</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-chat-dots"></i></span>
-            <select class="form-select" id="motivacao" required>
-              <option value="">Selecione</option>
-              <option>Indicação</option>
-              <option>Redes Sociais</option>
-              <option>Parentes</option>
-              <option>Outros</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <label class="form-label fw-semibold">Observações</label>
-          <textarea class="form-control" id="obs" rows="3" placeholder="Informações adicionais"></textarea>
-        </div>
-
-        <div class="d-flex justify-content-end gap-2">
-          <button type="reset" class="btn btn-outline-secondary btn-custom">
-            <i class="bi bi-x-lg"></i> Limpar
-          </button>
-          <button type="submit" class="btn btn-primary btn-custom">
-            <i class="bi bi-save"></i> Cadastrar
-          </button>
-        </div>
-
-      </form>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const fluxoListarVendedores = "URL_FLUXO_LISTAR_VENDEDORES";
-    const fluxoListarModalidades = "URL_FLUXO_LISTAR_MODALIDADES";
-    const fluxoCadastrarAluno = "URL_FLUXO_CADASTRAR_ALUNO";
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const fluxoListarVendedores = "https://prod-184.westus.logic.azure.com:443/workflows/3698ee5409da4b70b92aa02724f2da0f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=2xwLBJpDqz4fWKkv59C6QTOqLF1AcTx8yn8onro7qTE";
+        const fluxoListarModalidades = "https://prod-45.westus.logic.azure.com:443/workflows/ac5a80b2f4cc4e819a5a77934f3448c3/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=yyOftOEb9h7RotV8Ff1gvB-clWlynObX2oo-7UNWlgY";
+        const fluxoListarMotivacao = "https://prod-64.westus.logic.azure.com:443/workflows/db5c1e8c69154e71b839a2aa229376dc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qYS6VxWbOpf03kC86nmy2C11CQKxAeLHJlYBS9tuCeo";
+        const fluxoCadastrarAluno = "https://prod-41.westus.logic.azure.com:443/workflows/18af2b2affcb4404a4defc5459f05f0b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5B-jlAh_oMlzJ2evq2PC0GeaIFxfCGKLqsN4yUJqrSo";
 
-    async function carregarVendedores() {
-      try {
-        const res = await fetch(fluxoListarVendedores);
-        const data = await res.json();
-        $('#vendedor').empty().append('<option value="">Selecione um vendedor</option>');
-        data.forEach(v => {
-          const texto = `${v.Nome} - ${v.CPF}`;
-          const valor = v.CPF;
-          $('#vendedor').append(`<option value="${valor}">${texto}</option>`);
+        async function carregarVendedores() {
+            try {
+                const res = await fetch(fluxoListarVendedores, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                const data = await res.json();
+                $('#vendedor').empty().append('<option value="">Selecione um vendedor</option>');
+                data.forEach(v => {
+                    const texto = `${v.Nome} - ${v.CPF}`;
+                    $('#vendedor').append(`<option value="${v.CPF}">${texto}</option>`);
+                });
+            } catch (err) {
+                console.error("Erro ao carregar vendedores:", err);
+            }
+        }
+
+        async function carregarModalidades() {
+            try {
+                const res = await fetch(fluxoListarModalidades, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                const data = await res.json();
+                $('#modalidade').empty().append('<option value="">Selecione</option>');
+                data.forEach(m => {
+                    $('#modalidade').append(`<option value="${m.Modalidades}">${m.Modalidades}</option>`);
+                });
+            } catch (err) {
+                console.error("Erro ao carregar modalidades:", err);
+            }
+        }
+
+        async function carregarMotivacao() {
+            try {
+                const res = await fetch(fluxoListarMotivacao, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                const data = await res.json();
+                $('#motivacao').empty().append('<option value="">Selecione</option>');
+                data.forEach(m => {
+                    $('#motivacao').append(`<option value="${m.Motivacao}">${m.Motivacao}</option>`);
+                });
+            } catch (err) {
+                console.error("Erro ao carregar motivações:", err);
+            }
+        }
+
+        async function enviarCadastro(event) {
+            event.preventDefault();
+
+            const dados = {
+                Vendedor: document.getElementById("vendedor").value,
+                Nome: document.getElementById("nome").value,
+                CPF: document.getElementById("cpf").value,
+                Telefone: document.getElementById("telefone").value,
+                Email: document.getElementById("email").value,
+                DataCadastro: document.getElementById("dataCadastro").value,
+                Modalidade: document.getElementById("modalidade").value,
+                Motivacao: document.getElementById("motivacao").value,
+                Observacoes: document.getElementById("obs").value
+            };
+
+            try {
+                const res = await fetch(fluxoCadastrarAluno, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+
+                if (res.ok) {
+                    alert("✅ Aluno cadastrado com sucesso!");
+                    document.getElementById("formCadastroAluno").reset();
+                } else {
+                    alert("⚠️ Erro ao cadastrar aluno. Verifique os dados.");
+                }
+            } catch (err) {
+                console.error("Erro ao cadastrar aluno:", err);
+                alert("❌ Erro na comunicação com o servidor.");
+            }
+        }
+
+        $(document).ready(() => {
+            carregarVendedores();
+            carregarModalidades();
+            carregarMotivacao();
+            document.getElementById("formCadastroAluno").addEventListener("submit", enviarCadastro);
         });
-      } catch {
-        alert("Erro ao carregar vendedores");
-      }
-    }
+    </script>
 
-    async function carregarModalidades() {
-      try {
-        const res = await fetch(fluxoListarModalidades);
-        const data = await res.json();
-        $('#modalidade').empty().append('<option value="">Selecione a modalidade</option>');
-        data.forEach(m => {
-          $('#modalidade').append(`<option value="${m.Nome}">${m.Nome}</option>`);
-        });
-      } catch {
-        alert("Erro ao carregar modalidades");
-      }
-    }
-
-    $('#formCadastroAluno').on('submit', async function (e) {
-      e.preventDefault();
-      const dados = {
-        vendedor: $('#vendedor').val(),
-        nome: $('#nome').val(),
-        cpf: $('#cpf').val(),
-        telefone: $('#telefone').val(),
-        email: $('#email').val(),
-        dataCadastro: $('#dataCadastro').val(),
-        modalidade: $('#modalidade').val(),
-        motivacao: $('#motivacao').val(),
-        obs: $('#obs').val()
-      };
-      await fetch(fluxoCadastrarAluno, {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dados)
-      });
-      alert("Cadastro realizado com sucesso!");
-      this.reset();
-    });
-
-    $(document).ready(() => {
-      carregarVendedores();
-      carregarModalidades();
-    });
-  </script>
 </body>
+
 </html>
