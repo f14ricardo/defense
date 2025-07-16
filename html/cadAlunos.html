@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 
+<!DOCTYPE html>
+
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro de Alunos - Projeto Defense</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <script src="../js/loadNavbarFooter.js"></script>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>
+        Cadastro de Alunos - Projeto Defense
+    </title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet"/>
+</script>
+<style>
         body {
             background-color: #f8f9fa;
         }
-            
+
         .form-section {
             background-color: white;
             border-radius: 10px;
@@ -21,7 +24,7 @@
             margin-top: 2rem;
             margin-bottom: 2rem;
         }
-        
+
         .section-title {
             position: relative;
             padding-left: 20px;
@@ -29,7 +32,7 @@
             color: #2c3e50;
             font-weight: 600;
         }
-        
+
         .section-title::before {
             content: "";
             position: absolute;
@@ -41,127 +44,128 @@
             background-color: #0d6efd;
             border-radius: 3px;
         }
-        
+
         .section-title i {
             margin-right: 10px;
             font-size: 1.4rem;
             vertical-align: middle;
             color: #0d6efd;
         }
-        
+
         .btn-custom {
             font-weight: 500;
             border-radius: 8px;
             padding: 8px 16px;
         }
-        
+
         .search-box {
             position: relative;
             margin-bottom: 15px;
         }
-        
+
         .search-box i {
             position: absolute;
             top: 12px;
             left: 12px;
             color: #6c757d;
         }
-        
+
         .search-input {
             padding-left: 40px;
             height: 42px;
         }
-        
+
         .btn-novo-aluno {
             height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
+
         .table-responsive {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
-        
+
         .alunos-table {
             width: 100%;
             min-width: 600px;
         }
-        
+
         .alunos-table th {
             background-color: #f1f3f5;
             padding: 12px;
             text-align: left;
             white-space: nowrap;
         }
-        
+
         .alunos-table td {
             padding: 12px;
             background-color: white;
             border-bottom: 1px solid #dee2e6;
             vertical-align: middle;
         }
-        
+
         .alunos-table tr {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        
+
         .action-btn {
             padding: 5px 8px;
             margin: 2px;
             font-size: 0.875rem;
         }
-        
+
         .pagination-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
         }
-        
+
         .items-per-page {
             width: 120px;
         }
-        
+
         .status-history-item {
             border-left: 4px solid #dee2e6;
             padding: 10px;
             margin-bottom: 10px;
         }
-        
+
         .status-history-item.active {
             border-left-color: #198754;
         }
-        
+
         .status-history-item.pending {
             border-left-color: #ffc107;
         }
-        
+
         .status-history-item.inactive {
             border-left-color: #dc3545;
         }
-        
+
         @media (max-width: 768px) {
             .search-box {
                 margin-bottom: 15px;
             }
-            
-            .alunos-table td, .alunos-table th {
+
+            .alunos-table td,
+            .alunos-table th {
                 padding: 8px;
                 font-size: 0.875rem;
             }
-            
+
             .action-btn {
                 padding: 4px 6px;
                 margin: 1px;
                 font-size: 0.75rem;
             }
-            
+
             .badge {
                 font-size: 0.75rem;
             }
-            
+
             .pagination-controls {
                 flex-direction: column;
                 gap: 10px;
@@ -169,462 +173,652 @@
         }
     </style>
 </head>
-
 <body>
-    <!-- Navbar -->
-    <div id="navbar-container"></div>
-
-    <!-- Cadastro de Alunos -->
-    <div class="container">
-        <div class="form-section">
-            <h3 class="section-title">
-                <i class="bi bi-people-fill"></i> Cadastro de Alunos
+<!-- Navbar -->
+<div id="navbar-container">
+</div>
+<!-- Cadastro de Alunos -->
+<div class="container">
+<div class="form-section">
+<h3 class="section-title">
+<i class="bi bi-people-fill">
+</i>
+                Cadastro de Alunos
             </h3>
-            
-            <!-- Barra de Pesquisa e Novo Aluno -->
-            <div class="row mb-3">
-                <div class="col-md-8 col-sm-12 mb-3 mb-md-0">
-                    <div class="search-box">
-                        <i class="bi bi-search"></i>
-                        <input type="text" class="form-control search-input" id="pesquisaAluno" placeholder="Pesquisar aluno...">
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <button class="btn btn-primary btn-custom btn-novo-aluno w-100" data-bs-toggle="modal" data-bs-target="#modalAluno">
-                        <i class="bi bi-plus-lg"></i> Novo Aluno
+<!-- Barra de Pesquisa e Novo Aluno -->
+<div class="row mb-3">
+<div class="col-md-8 col-sm-12 mb-3 mb-md-0">
+<div class="search-box">
+<i class="bi bi-search">
+</i>
+<input class="form-control search-input" id="pesquisaAluno" placeholder="Pesquisar aluno..." type="text"/>
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<button class="btn btn-primary btn-custom btn-novo-aluno w-100" data-bs-target="#modalAluno" data-bs-toggle="modal">
+<i class="bi bi-plus-lg">
+</i>
+                        Novo Aluno
                     </button>
+</div>
+</div>
+<!-- Controles de Exibição -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="text-muted">
+                    Mostrando
+                    <span id="inicioRegistros">
+                        1
+                    </span>
+                    -
+                    <span id="fimRegistros">
+                        10
+                    </span>
+                    de
+                    <span id="totalRegistros">
+                        50
+                    </span>
+                    alunos
                 </div>
-            </div>
-            
-            <!-- Controles de Exibição -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="text-muted">
-                    Mostrando <span id="inicioRegistros">1</span>-<span id="fimRegistros">10</span> de <span id="totalRegistros">50</span> alunos
-                </div>
-                <div class="d-flex align-items-center">
-                    <span class="me-2">Itens por página:</span>
-                    <select class="form-select form-select-sm items-per-page" id="itensPorPagina">
-                        <option value="10">10</option>
-                        <option value="20" selected>20</option>
-                        <option value="30">30</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                </div>
-            </div>
-            
-            <!-- Tabela de Alunos -->
-            <div class="table-responsive">
-                <table class="alunos-table">
-                    <thead>
-                        <tr>
-                            <th width="5%">ID</th>
-                            <th width="25%">Aluno</th>
-                            <th width="15%">Turma</th>
-                            <th width="15%">Plano</th>
-                            <th width="15%">Status</th>
-                            <th width="25%">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabelaAlunos">
-                        <tr>
-                            <td>1001</td>
-                            <td>João da Silva</td>
-                            <td>Turma A</td>
-                            <td>Plano Premium</td>
-                            <td><span class="badge bg-success">Ativo</span></td>
-                            <td>
-                                <div class="d-flex flex-wrap">
-                                    <button class="btn btn-sm btn-outline-primary action-btn" data-bs-toggle="modal" data-bs-target="#modalEditarAluno">
-                                        <i class="bi bi-pencil"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn" onclick="confirmarExclusao('1001', 'João da Silva')">
-                                        <i class="bi bi-trash"></i> Excluir
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary action-btn" onclick="mostrarHistoricoStatus('1001')">
-                                        <i class="bi bi-clock-history"></i> Histórico
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1002</td>
-                            <td>Maria Oliveira</td>
-                            <td>Turma B</td>
-                            <td>Plano Básico</td>
-                            <td><span class="badge bg-warning text-dark">Pendente</span></td>
-                            <td>
-                                <div class="d-flex flex-wrap">
-                                    <button class="btn btn-sm btn-outline-primary action-btn" data-bs-toggle="modal" data-bs-target="#modalEditarAluno">
-                                        <i class="bi bi-pencil"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn" onclick="confirmarExclusao('1002', 'Maria Oliveira')">
-                                        <i class="bi bi-trash"></i> Excluir
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary action-btn" onclick="mostrarHistoricoStatus('1002')">
-                                        <i class="bi bi-clock-history"></i> Histórico
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1003</td>
-                            <td>Carlos Souza</td>
-                            <td>Turma C</td>
-                            <td>Plano Intermediário</td>
-                            <td><span class="badge bg-danger">Inativo</span></td>
-                            <td>
-                                <div class="d-flex flex-wrap">
-                                    <button class="btn btn-sm btn-outline-primary action-btn" data-bs-toggle="modal" data-bs-target="#modalEditarAluno">
-                                        <i class="bi bi-pencil"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger action-btn" onclick="confirmarExclusao('1003', 'Carlos Souza')">
-                                        <i class="bi bi-trash"></i> Excluir
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-secondary action-btn" onclick="mostrarHistoricoStatus('1003')">
-                                        <i class="bi bi-clock-history"></i> Histórico
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <!-- Paginação -->
-            <div class="pagination-controls">
-                <div class="d-flex align-items-center">
-                    <span class="me-2">Página:</span>
-                    <select class="form-select form-select-sm" id="paginaAtual" style="width: 80px;">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                    <span class="ms-2">de 3</span>
-                </div>
-                
-                <nav>
-                    <ul class="pagination mb-0">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                <i class="bi bi-chevron-left"></i>
+<div class="d-flex align-items-center">
+<span class="me-2">
+                        Itens por página:
+                    </span>
+<select class="form-select form-select-sm items-per-page" id="itensPorPagina">
+<option value="10">
+                            10
+                        </option>
+<option selected="" value="20">
+                            20
+                        </option>
+<option value="30">
+                            30
+                        </option>
+<option value="50">
+                            50
+                        </option>
+<option value="100">
+                            100
+                        </option>
+</select>
+</div>
+</div>
+<!-- Tabela de Alunos -->
+<div class="table-responsive">
+<table class="alunos-table">
+<thead>
+<tr>
+<th width="5%">
+                                ID
+                            </th>
+<th width="25%">
+                                Aluno
+                            </th>
+<th width="15%">
+                                Turma
+                            </th>
+<th width="15%">
+                                Plano
+                            </th>
+<th width="15%">
+                                Status
+                            </th>
+<th width="25%">
+                                Ações
+                            </th>
+</tr>
+</thead>
+<tbody id="tabelaAlunosBody"></tbody>
+</table>
+</div>
+<!-- Paginação -->
+<div class="pagination-controls">
+<div class="d-flex align-items-center">
+<span class="me-2">
+                        Página:
+                    </span>
+<select class="form-select form-select-sm" id="paginaAtual" style="width: 80px;">
+<option value="1">
+                            1
+                        </option>
+<option value="2">
+                            2
+                        </option>
+<option value="3">
+                            3
+                        </option>
+</select>
+<span class="ms-2">
+                        de 3
+                    </span>
+</div>
+<nav>
+<ul class="pagination mb-0">
+<li class="page-item disabled">
+<a aria-disabled="true" class="page-link" href="#" tabindex="-1">
+<i class="bi bi-chevron-left">
+</i>
+</a>
+</li>
+<li class="page-item active">
+<a class="page-link" href="#">
+                                1
                             </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="bi bi-chevron-right"></i>
+</li>
+<li class="page-item">
+<a class="page-link" href="#">
+                                2
                             </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Cadastro de Aluno -->
-    <div class="modal fade" id="modalAluno" tabindex="-1" aria-labelledby="modalAlunoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="bi bi-person-plus"></i> Novo Aluno
+</li>
+<li class="page-item">
+<a class="page-link" href="#">
+                                3
+                            </a>
+</li>
+<li class="page-item">
+<a class="page-link" href="#">
+<i class="bi bi-chevron-right">
+</i>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<!-- Modal para Cadastro de Aluno -->
+<div aria-hidden="true" aria-labelledby="modalAlunoLabel" class="modal fade" id="modalAluno" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">
+<i class="bi bi-person-plus">
+</i>
+                        Novo Aluno
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formCadastroAluno">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="nomeAluno" class="form-label">Nome Completo</label>
-                                <input type="text" class="form-control" id="nomeAluno" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="emailAluno" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="emailAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="cpfAluno" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="cpfAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="telefoneAluno" class="form-label">Telefone</label>
-                                <input type="tel" class="form-control" id="telefoneAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="dataNascimentoAluno" class="form-label">Data de Nascimento</label>
-                                <input type="date" class="form-control" id="dataNascimentoAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="turmaAluno" class="form-label">Turma</label>
-                                <select class="form-select" id="turmaAluno" required>
-                                    <option value="">Selecione...</option>
-                                    <option value="Turma A">Turma A</option>
-                                    <option value="Turma B">Turma B</option>
-                                    <option value="Turma C">Turma C</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="planoAluno" class="form-label">Plano</label>
-                                <select class="form-select" id="planoAluno" required>
-                                    <option value="">Selecione...</option>
-                                    <option value="Básico">Básico</option>
-                                    <option value="Intermediário">Intermediário</option>
-                                    <option value="Premium">Premium</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="statusAluno" class="form-label">Status</label>
-                                <select class="form-select" id="statusAluno" required>
-                                    <option value="Ativo">Ativo</option>
-                                    <option value="Pendente">Pendente</option>
-                                    <option value="Inativo">Inativo</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="cepAluno" class="form-label">CEP</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="cepAluno">
-                                    <button class="btn btn-outline-secondary" type="button" id="btnBuscarCep">
-                                        <i class="bi bi-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <label for="enderecoAluno" class="form-label">Endereço</label>
-                                <input type="text" class="form-control" id="enderecoAluno">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="numeroAluno" class="form-label">Número</label>
-                                <input type="text" class="form-control" id="numeroAluno">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="bairroAluno" class="form-label">Bairro</label>
-                                <input type="text" class="form-control" id="bairroAluno">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="cidadeAluno" class="form-label">Cidade</label>
-                                <input type="text" class="form-control" id="cidadeAluno">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="ufAluno" class="form-label">UF</label>
-                                <input type="text" class="form-control" id="ufAluno">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="dataInicioAluno" class="form-label">Data Início</label>
-                                <input type="date" class="form-control" id="dataInicioAluno">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-lg"></i> Cancelar
+<button aria-label="Fechar" class="btn-close" data-bs-dismiss="modal" type="button">
+</button>
+</div>
+<div class="modal-body">
+<form id="formCadastroAluno">
+<div class="col-md-12">
+<button class="btn btn-outline-primary mb-3" data-bs-target="#modalPreCadastro" data-bs-toggle="modal" type="button">
+<i class="bi bi-person-lines-fill">
+</i>
+                                Buscar no Pré-Cadastro
+                            </button>
+</div>
+<div class="row g-3">
+<div class="col-md-6">
+<label class="form-label" for="nomeAluno">
+                                    Nome Completo
+                                </label>
+<input class="form-control" id="nomeAluno" required="" type="text"/>
+</div>
+<div class="col-md-6">
+<label class="form-label" for="emailAluno">
+                                    E-mail
+                                </label>
+<input class="form-control" id="emailAluno" required="" type="email"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="cpfAluno">
+                                    CPF
+                                </label>
+<input class="form-control" id="cpfAluno" required="" type="text"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="telefoneAluno">
+                                    Telefone
+                                </label>
+<input class="form-control" id="telefoneAluno" required="" type="tel"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="dataNascimentoAluno">
+                                    Data de Nascimento
+                                </label>
+<input class="form-control" id="dataNascimentoAluno" required="" type="date"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="turmaAluno">
+                                    Turma
+                                </label>
+<select class="form-select" id="turmaAluno" required="">
+<option value="">
+                                        Selecione...
+                                    </option>
+<option value="Turma A">
+                                        Turma A
+                                    </option>
+<option value="Turma B">
+                                        Turma B
+                                    </option>
+<option value="Turma C">
+                                        Turma C
+                                    </option>
+</select>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="planoAluno">
+                                    Plano
+                                </label>
+<select class="form-select" id="planoAluno" required="">
+<option value="">
+                                        Selecione...
+                                    </option>
+<option value="Básico">
+                                        Básico
+                                    </option>
+<option value="Intermediário">
+                                        Intermediário
+                                    </option>
+<option value="Premium">
+                                        Premium
+                                    </option>
+</select>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="statusAluno">
+                                    Status
+                                </label>
+<select class="form-select" id="statusAluno" required="">
+<option value="Ativo">
+                                        Ativo
+                                    </option>
+<option value="Pendente">
+                                        Pendente
+                                    </option>
+<option value="Inativo">
+                                        Inativo
+                                    </option>
+</select>
+</div>
+<div class="col-md-3">
+<label class="form-label" for="cepAluno">
+                                    CEP
+                                </label>
+<div class="input-group">
+<input class="form-control" id="cepAluno" type="text"/>
+<button class="btn btn-outline-secondary" id="btnBuscarCep" type="button">
+<i class="bi bi-search">
+</i>
+</button>
+</div>
+</div>
+<div class="col-md-7">
+<label class="form-label" for="enderecoAluno">
+                                    Endereço
+                                </label>
+<input class="form-control" id="enderecoAluno" type="text"/>
+</div>
+<div class="col-md-2">
+<label class="form-label" for="numeroAluno">
+                                    Número
+                                </label>
+<input class="form-control" id="numeroAluno" type="text"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="bairroAluno">
+                                    Bairro
+                                </label>
+<input class="form-control" id="bairroAluno" type="text"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="cidadeAluno">
+                                    Cidade
+                                </label>
+<input class="form-control" id="cidadeAluno" type="text"/>
+</div>
+<div class="col-md-2">
+<label class="form-label" for="ufAluno">
+                                    UF
+                                </label>
+<input class="form-control" id="ufAluno" type="text"/>
+</div>
+<div class="col-md-2">
+<label class="form-label" for="dataInicioAluno">
+                                    Data Início
+                                </label>
+<input class="form-control" id="dataInicioAluno" type="date"/>
+</div>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline-secondary" data-bs-dismiss="modal" type="button">
+<i class="bi bi-x-lg">
+</i>
+                        Cancelar
                     </button>
-                    <button type="button" class="btn btn-primary" onclick="salvarAluno()">
-                        <i class="bi bi-save"></i> Salvar
+<button class="btn btn-primary" onclick="salvarAluno()" type="button">
+<i class="bi bi-save">
+</i>
+                        Salvar
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Edição de Aluno -->
-    <div class="modal fade" id="modalEditarAluno" tabindex="-1" aria-labelledby="modalEditarAlunoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="bi bi-person-gear"></i> Editar Aluno
+</div>
+</div>
+</div>
+</div>
+<!-- Modal para Edição de Aluno -->
+<div aria-hidden="true" aria-labelledby="modalEditarAlunoLabel" class="modal fade" id="modalEditarAluno" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">
+<i class="bi bi-person-gear">
+</i>
+                        Editar Aluno
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formEditarAluno">
-                        <div class="row g-3">
-                            <input type="hidden" id="editIdAluno">
-                            <div class="col-md-6">
-                                <label for="editNomeAluno" class="form-label">Nome Completo</label>
-                                <input type="text" class="form-control" id="editNomeAluno" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="editEmailAluno" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="editEmailAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editCpfAluno" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="editCpfAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editTelefoneAluno" class="form-label">Telefone</label>
-                                <input type="tel" class="form-control" id="editTelefoneAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editDataNascimentoAluno" class="form-label">Data de Nascimento</label>
-                                <input type="date" class="form-control" id="editDataNascimentoAluno" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editTurmaAluno" class="form-label">Turma</label>
-                                <select class="form-select" id="editTurmaAluno" required>
-                                    <option value="">Selecione...</option>
-                                    <option value="Turma A">Turma A</option>
-                                    <option value="Turma B">Turma B</option>
-                                    <option value="Turma C">Turma C</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editPlanoAluno" class="form-label">Plano</label>
-                                <select class="form-select" id="editPlanoAluno" required>
-                                    <option value="">Selecione...</option>
-                                    <option value="Básico">Básico</option>
-                                    <option value="Intermediário">Intermediário</option>
-                                    <option value="Premium">Premium</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editStatusAluno" class="form-label">Status</label>
-                                <select class="form-select" id="editStatusAluno" required>
-                                    <option value="Ativo">Ativo</option>
-                                    <option value="Pendente">Pendente</option>
-                                    <option value="Inativo">Inativo</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="editCepAluno" class="form-label">CEP</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="editCepAluno">
-                                    <button class="btn btn-outline-secondary" type="button" id="editBtnBuscarCep">
-                                        <i class="bi bi-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <label for="editEnderecoAluno" class="form-label">Endereço</label>
-                                <input type="text" class="form-control" id="editEnderecoAluno">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="editNumeroAluno" class="form-label">Número</label>
-                                <input type="text" class="form-control" id="editNumeroAluno">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editBairroAluno" class="form-label">Bairro</label>
-                                <input type="text" class="form-control" id="editBairroAluno">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="editCidadeAluno" class="form-label">Cidade</label>
-                                <input type="text" class="form-control" id="editCidadeAluno">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="editUfAluno" class="form-label">UF</label>
-                                <input type="text" class="form-control" id="editUfAluno">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="editDataInicioAluno" class="form-label">Data Início</label>
-                                <input type="date" class="form-control" id="editDataInicioAluno">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-lg"></i> Cancelar
+<button aria-label="Fechar" class="btn-close" data-bs-dismiss="modal" type="button">
+</button>
+</div>
+<div class="modal-body">
+<form id="formEditarAluno">
+<div class="row g-3">
+<input id="editIdAluno" type="hidden"/>
+<div class="col-md-6">
+<label class="form-label" for="editNomeAluno">
+                                    Nome Completo
+                                </label>
+<input class="form-control" id="editNomeAluno" required="" type="text"/>
+</div>
+<div class="col-md-6">
+<label class="form-label" for="editEmailAluno">
+                                    E-mail
+                                </label>
+<input class="form-control" id="editEmailAluno" required="" type="email"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editCpfAluno">
+                                    CPF
+                                </label>
+<input class="form-control" id="editCpfAluno" required="" type="text"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editTelefoneAluno">
+                                    Telefone
+                                </label>
+<input class="form-control" id="editTelefoneAluno" required="" type="tel"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editDataNascimentoAluno">
+                                    Data de Nascimento
+                                </label>
+<input class="form-control" id="editDataNascimentoAluno" required="" type="date"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editTurmaAluno">
+                                    Turma
+                                </label>
+<select class="form-select" id="editTurmaAluno" required="">
+<option value="">
+                                        Selecione...
+                                    </option>
+<option value="Turma A">
+                                        Turma A
+                                    </option>
+<option value="Turma B">
+                                        Turma B
+                                    </option>
+<option value="Turma C">
+                                        Turma C
+                                    </option>
+</select>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editPlanoAluno">
+                                    Plano
+                                </label>
+<select class="form-select" id="editPlanoAluno" required="">
+<option value="">
+                                        Selecione...
+                                    </option>
+<option value="Básico">
+                                        Básico
+                                    </option>
+<option value="Intermediário">
+                                        Intermediário
+                                    </option>
+<option value="Premium">
+                                        Premium
+                                    </option>
+</select>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editStatusAluno">
+                                    Status
+                                </label>
+<select class="form-select" id="editStatusAluno" required="">
+<option value="Ativo">
+                                        Ativo
+                                    </option>
+<option value="Pendente">
+                                        Pendente
+                                    </option>
+<option value="Inativo">
+                                        Inativo
+                                    </option>
+</select>
+</div>
+<div class="col-md-3">
+<label class="form-label" for="editCepAluno">
+                                    CEP
+                                </label>
+<div class="input-group">
+<input class="form-control" id="editCepAluno" type="text"/>
+<button class="btn btn-outline-secondary" id="editBtnBuscarCep" type="button">
+<i class="bi bi-search">
+</i>
+</button>
+</div>
+</div>
+<div class="col-md-7">
+<label class="form-label" for="editEnderecoAluno">
+                                    Endereço
+                                </label>
+<input class="form-control" id="editEnderecoAluno" type="text"/>
+</div>
+<div class="col-md-2">
+<label class="form-label" for="editNumeroAluno">
+                                    Número
+                                </label>
+<input class="form-control" id="editNumeroAluno" type="text"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editBairroAluno">
+                                    Bairro
+                                </label>
+<input class="form-control" id="editBairroAluno" type="text"/>
+</div>
+<div class="col-md-4">
+<label class="form-label" for="editCidadeAluno">
+                                    Cidade
+                                </label>
+<input class="form-control" id="editCidadeAluno" type="text"/>
+</div>
+<div class="col-md-2">
+<label class="form-label" for="editUfAluno">
+                                    UF
+                                </label>
+<input class="form-control" id="editUfAluno" type="text"/>
+</div>
+<div class="col-md-2">
+<label class="form-label" for="editDataInicioAluno">
+                                    Data Início
+                                </label>
+<input class="form-control" id="editDataInicioAluno" type="date"/>
+</div>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline-secondary" data-bs-dismiss="modal" type="button">
+<i class="bi bi-x-lg">
+</i>
+                        Cancelar
                     </button>
-                    <button type="button" class="btn btn-primary" onclick="atualizarAluno()">
-                        <i class="bi bi-save"></i> Atualizar
+<button class="btn btn-primary" onclick="atualizarAluno()" type="button">
+<i class="bi bi-save">
+</i>
+                        Atualizar
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Confirmação de Exclusão -->
-    <div class="modal fade" id="modalConfirmarExclusao" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">
-                        <i class="bi bi-exclamation-triangle"></i> Confirmar Exclusão
+</div>
+</div>
+</div>
+</div>
+<!-- Modal de Confirmação de Exclusão -->
+<div aria-hidden="true" class="modal fade" id="modalConfirmarExclusao" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header bg-danger text-white">
+<h5 class="modal-title">
+<i class="bi bi-exclamation-triangle">
+</i>
+                        Confirmar Exclusão
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Tem certeza que deseja excluir o aluno <strong id="nomeAlunoExcluir"></strong> (ID: <strong id="idAlunoExcluir"></strong>)?</p>
-                    <p class="text-danger">Esta ação não pode ser desfeita!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-lg"></i> Cancelar
+<button aria-label="Fechar" class="btn-close btn-close-white" data-bs-dismiss="modal" type="button">
+</button>
+</div>
+<div class="modal-body">
+<p>
+                        Tem certeza que deseja excluir o aluno
+                        <strong id="nomeAlunoExcluir">
+</strong>
+                        (ID:
+                        <strong id="idAlunoExcluir">
+</strong>
+                        )?
+                    </p>
+<p class="text-danger">
+                        Esta ação não pode ser desfeita!
+                    </p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline-secondary" data-bs-dismiss="modal" type="button">
+<i class="bi bi-x-lg">
+</i>
+                        Cancelar
                     </button>
-                    <button type="button" class="btn btn-danger" onclick="excluirAluno()">
-                        <i class="bi bi-trash"></i> Confirmar Exclusão
+<button class="btn btn-danger" onclick="excluirAluno()" type="button">
+<i class="bi bi-trash">
+</i>
+                        Confirmar Exclusão
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Histórico de Status -->
-    <div class="modal fade" id="modalHistoricoStatus" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">
-                        <i class="bi bi-clock-history"></i> Histórico de Status
+</div>
+</div>
+</div>
+</div>
+<!-- Modal de Histórico de Status -->
+<div aria-hidden="true" class="modal fade" id="modalHistoricoStatus" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header bg-primary text-white">
+<h5 class="modal-title">
+<i class="bi bi-clock-history">
+</i>
+                        Histórico de Status
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <h6>Aluno: <span id="nomeAlunoHistorico"></span></h6>
-                    <p class="text-muted mb-3">ID: <span id="idAlunoHistorico"></span></p>
-                    
-                    <div id="historicoStatusContainer">
-                        <!-- Itens de histórico serão adicionados dinamicamente -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-lg"></i> Fechar
+<button aria-label="Fechar" class="btn-close btn-close-white" data-bs-dismiss="modal" type="button">
+</button>
+</div>
+<div class="modal-body">
+<h6>
+                        Aluno:
+                        <span id="nomeAlunoHistorico">
+</span>
+</h6>
+<p class="text-muted mb-3">
+                        ID:
+                        <span id="idAlunoHistorico">
+</span>
+</p>
+<div id="historicoStatusContainer">
+<!-- Itens de histórico serão adicionados dinamicamente -->
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline-secondary" data-bs-dismiss="modal" type="button">
+<i class="bi bi-x-lg">
+</i>
+                        Fechar
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<!-- Modal de Pré-Cadastro -->
+<div aria-hidden="true" aria-labelledby="modalPreCadastroLabel" class="modal fade" id="modalPreCadastro" tabindex="-1">
+<div class="modal-dialog modal-xl modal-dialog-scrollable">
+<div class="modal-content">
+<div class="modal-header bg-primary text-white">
+<h5 class="modal-title" id="modalPreCadastroLabel">
+<i class="bi bi-person-lines-fill"></i> Pré-Cadastros Disponíveis
+                    </h5>
+<button aria-label="Fechar" class="btn-close btn-close-white" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<div class="mb-3">
+<label class="form-label" for="filtroPreCadastro">🔍 Buscar por nome ou CPF</label>
+<input class="form-control" id="filtroPreCadastro" placeholder="Digite para filtrar..." type="text"/>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-hover align-middle">
+<thead class="table-light">
+<tr>
+<th>Nome</th>
+<th>CPF</th>
+<th>Telefone</th>
+<th>E-mail</th>
+<th class="text-center">Ações</th>
+</tr>
+</thead>
+<tbody id="tabelaPreCadastro">
+<!-- preenchido dinamicamente -->
+</tbody>
+</table>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" data-bs-dismiss="modal" type="button">
+<i class="bi bi-x-lg"></i> Fechar
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<div id="footer-container">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+<script>
         // Variáveis globais para controle
         let alunoParaExcluir = null;
         let itensPorPagina = 20;
         let paginaAtual = 1;
         let totalRegistros = 50;
-        
+
         // Função para mostrar histórico de status
         function mostrarHistoricoStatus(alunoId) {
             // Aqui você implementaria a chamada AJAX para buscar o histórico do aluno
             console.log(`Buscando histórico do aluno ID: ${alunoId}`);
-            
+
             // Simulação de dados - na prática viria do backend
             const alunoNome = document.querySelector(`tr:has(td:contains('${alunoId}')) td:nth-child(2)`).textContent;
-            
+
             document.getElementById('nomeAlunoHistorico').textContent = alunoNome;
             document.getElementById('idAlunoHistorico').textContent = alunoId;
-            
+
             // Limpar container antes de adicionar novos itens
             const container = document.getElementById('historicoStatusContainer');
             container.innerHTML = '';
-            
+
             // Simulação de histórico - na prática viria do backend
             const historico = [
                 { status: "Ativo", dataInicio: "10/01/2023", dataFim: "Atual", alteradoPor: "Admin" },
                 { status: "Pendente", dataInicio: "05/01/2023", dataFim: "09/01/2023", alteradoPor: "Sistema" },
                 { status: "Inativo", dataInicio: "01/12/2022", dataFim: "04/01/2023", alteradoPor: "João Silva" }
             ];
-            
+
             // Adicionar itens ao histórico
             historico.forEach(item => {
                 const div = document.createElement('div');
@@ -638,46 +832,46 @@
                 `;
                 container.appendChild(div);
             });
-            
+
             // Mostrar modal
             const modal = new bootstrap.Modal(document.getElementById('modalHistoricoStatus'));
             modal.show();
         }
-        
+
         function carregarAlunos() {
             atualizarControlesPagina();
         }
-        
+
         function atualizarControlesPagina() {
             const inicio = (paginaAtual - 1) * itensPorPagina + 1;
             let fim = paginaAtual * itensPorPagina;
             fim = fim > totalRegistros ? totalRegistros : fim;
-            
+
             document.getElementById('inicioRegistros').textContent = inicio;
             document.getElementById('fimRegistros').textContent = fim;
             document.getElementById('totalRegistros').textContent = totalRegistros;
         }
-        
-        document.getElementById('itensPorPagina').addEventListener('change', function() {
+
+        document.getElementById('itensPorPagina').addEventListener('change', function () {
             itensPorPagina = parseInt(this.value);
             paginaAtual = 1;
             carregarAlunos();
         });
-        
-        document.getElementById('paginaAtual').addEventListener('change', function() {
+
+        document.getElementById('paginaAtual').addEventListener('change', function () {
             paginaAtual = parseInt(this.value);
             carregarAlunos();
         });
-        
+
         function confirmarExclusao(id, nome) {
             alunoParaExcluir = id;
             document.getElementById('idAlunoExcluir').textContent = id;
             document.getElementById('nomeAlunoExcluir').textContent = nome;
-            
+
             const modal = new bootstrap.Modal(document.getElementById('modalConfirmarExclusao'));
             modal.show();
         }
-        
+
         function excluirAluno() {
             if (alunoParaExcluir) {
                 console.log(`Excluindo aluno ID: ${alunoParaExcluir}`);
@@ -687,14 +881,14 @@
                 alert('Aluno excluído com sucesso!');
             }
         }
-        
+
         function salvarAluno() {
             const form = document.getElementById('formCadastroAluno');
             if (!form.checkValidity()) {
                 form.classList.add('was-validated');
                 return;
             }
-            
+
             console.log('Salvando novo aluno...');
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalAluno'));
             modal.hide();
@@ -703,22 +897,22 @@
             form.reset();
             form.classList.remove('was-validated');
         }
-        
+
         function atualizarAluno() {
             const form = document.getElementById('formEditarAluno');
             if (!form.checkValidity()) {
                 form.classList.add('was-validated');
                 return;
             }
-            
+
             console.log('Atualizando aluno...');
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalEditarAluno'));
             modal.hide();
             carregarAlunos();
             alert('Aluno atualizado com sucesso!');
         }
-        
-        document.getElementById('btnBuscarCep').addEventListener('click', function() {
+
+        document.getElementById('btnBuscarCep').addEventListener('click', function () {
             const cep = document.getElementById('cepAluno').value;
             if (cep) {
                 document.getElementById('enderecoAluno').value = "Rua João Makiyama";
@@ -727,8 +921,8 @@
                 document.getElementById('ufAluno').value = "SP";
             }
         });
-        
-        document.getElementById('editBtnBuscarCep').addEventListener('click', function() {
+
+        document.getElementById('editBtnBuscarCep').addEventListener('click', function () {
             const cep = document.getElementById('editCepAluno').value;
             if (cep) {
                 document.getElementById('editEnderecoAluno').value = "Rua João Makiyama";
@@ -737,11 +931,11 @@
                 document.getElementById('editUfAluno').value = "SP";
             }
         });
-        
-        document.getElementById('pesquisaAluno').addEventListener('input', function() {
+
+        document.getElementById('pesquisaAluno').addEventListener('input', function () {
             const termo = this.value.toLowerCase();
             const linhas = document.querySelectorAll('#tabelaAlunos tr');
-            
+
             linhas.forEach(linha => {
                 const textoLinha = linha.textContent.toLowerCase();
                 if (textoLinha.includes(termo)) {
@@ -751,13 +945,278 @@
                 }
             });
         });
-        
+
         // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             carregarAlunos();
             const hoje = new Date().toISOString().split('T')[0];
             document.getElementById('dataInicioAluno').value = hoje;
         });
     </script>
-</body>
+<script>
+        const fluxoListarPreCadastro = "https://prod-52.westus.logic.azure.com:443/workflows/49e9822a6f6140b697f36070669821ec/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VMXFWjBuBMMfG-xVA0u_kiH3GzpsUWCZPzyi-lzwUwo";
+
+        async function carregarPreCadastro() {
+            try {
+                const res = await fetch(fluxoListarPreCadastro, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+
+                const json = await res.json();
+                console.log("DEBUG JSON:", json);
+
+                const dados = json.body; // 👈 CORRETO AGORA!
+
+                const tabela = document.getElementById("tabelaPreCadastro");
+                tabela.innerHTML = "";
+
+                dados.forEach((aluno) => {
+                    const linha = document.createElement("tr");
+                    linha.innerHTML = `
+                        <td>${aluno.Nome}</td>
+                        <td>${aluno.CPF}</td>
+                        <td>${aluno.Telefone}</td>
+                        <td>${aluno.Email}</td>
+                        <td class="text-center">
+          <button class="btn btn-success btn-sm selecionar-pre-cadastro"
+            data-nome="${aluno.Nome}"
+            data-cpf="${aluno.CPF}"
+            data-telefone="${aluno.Telefone}"
+            data-email="${aluno.Email}">
+            Selecionar
+          </button>
+        </td>
+      `;
+                    tabela.appendChild(linha);
+                });
+
+                aplicarListenersSelecao();
+            } catch (err) {
+                console.error("Erro ao carregar pré-cadastro:", err);
+            }
+        }
+
+
+        function aplicarListenersSelecao() {
+            document.querySelectorAll(".selecionar-pre-cadastro").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.getElementById("nomeAluno").value = btn.dataset.nome;
+                    document.getElementById("cpfAluno").value = btn.dataset.cpf;
+                    document.getElementById("telefoneAluno").value = btn.dataset.telefone;
+                    document.getElementById("emailAluno").value = btn.dataset.email;
+
+                    const modalPreCadastro = bootstrap.Modal.getInstance(document.getElementById("modalPreCadastro"));
+                    modalPreCadastro.hide();
+
+                    const modalAluno = new bootstrap.Modal(document.getElementById("modalAluno"));
+                    setTimeout(() => {
+                        modalAluno.show();
+                    }, 500);
+
+                });
+            });
+        }
+
+        // Filtro
+        document.addEventListener("input", function (e) {
+            if (e.target.id === "filtroPreCadastro") {
+                const termo = e.target.value.toLowerCase();
+                document.querySelectorAll("#tabelaPreCadastro tr").forEach(row => {
+                    const texto = row.textContent.toLowerCase();
+                    row.style.display = texto.includes(termo) ? "" : "none";
+                });
+            }
+        });
+
+        document.getElementById('modalPreCadastro').addEventListener('show.bs.modal', carregarPreCadastro);
+    </script>
+<script>
+        document.getElementById('btnBuscarCep').addEventListener('click', async function () {
+            const cep = document.getElementById('cepAluno').value.replace(/\D/g, '');
+            if (!cep) return;
+
+            try {
+                const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                const data = await res.json();
+
+                if (data.erro) throw new Error("CEP não encontrado");
+
+                document.getElementById('enderecoAluno').value = data.logradouro;
+                document.getElementById('bairroAluno').value = data.bairro;
+                document.getElementById('cidadeAluno').value = data.localidade;
+                document.getElementById('ufAluno').value = data.uf;
+            } catch (err) {
+                alert("Erro ao buscar o CEP. Verifique e tente novamente.");
+            }
+        });
+    </script>
+<script>
+        const fluxoListarTurmas = "https://prod-116.westus.logic.azure.com:443/workflows/9b399cb8f7c74742a3c977776b858af4/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Sxd8VuKvEAbXAdCUjSzx6mGFIck6CgsGZ_d5_7I9mIM";
+
+        async function carregarTurmas() {
+            try {
+                const res = await fetch(fluxoListarTurmas, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+
+                const json = await res.json();
+                const turmas = json.periodos || [];
+
+                const turmaSelect = document.getElementById("turmaAluno");
+                turmaSelect.innerHTML = '<option value="">Selecione...</option>';
+                turmas.forEach(t => {
+                    const option = document.createElement("option");
+                    option.value = t["Períodos"];
+                    option.textContent = t["Períodos"];
+                    turmaSelect.appendChild(option);
+                });
+            } catch (err) {
+                console.error("Erro ao carregar turmas:", err);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", carregarTurmas);
+    </script>
+<script>
+        async function salvarAluno() {
+            const form = document.getElementById('formCadastroAluno');
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+            }
+
+            const dados = {
+                Nome: document.getElementById("nomeAluno").value,
+                Email: document.getElementById("emailAluno").value,
+                CPF: document.getElementById("cpfAluno").value,
+                Telefone: document.getElementById("telefoneAluno").value,
+                DataNascimento: document.getElementById("dataNascimentoAluno").value,
+                Turma: document.getElementById("turmaAluno").value,
+                Plano: document.getElementById("planoAluno").value,
+                Status: document.getElementById("statusAluno").value,
+                CEP: document.getElementById("cepAluno").value,
+                Endereco: document.getElementById("enderecoAluno").value,
+                Numero: document.getElementById("numeroAluno").value,
+                Bairro: document.getElementById("bairroAluno").value,
+                Cidade: document.getElementById("cidadeAluno").value,
+                UF: document.getElementById("ufAluno").value,
+                DataInicio: document.getElementById("dataInicioAluno").value
+            };
+
+            try {
+                const res = await fetch("https://prod-58.westus.logic.azure.com:443/workflows/c98b58779d2d48749205f35ab9e3b305/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Rv5gxfXuZnenXgVYIRbqKlidonDhpunp8ewd4i4QIL4", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(dados)
+                });
+
+                if (res.ok) {
+                    alert("Aluno cadastrado com sucesso!");
+                    bootstrap.Modal.getInstance(document.getElementById("modalAluno")).hide();
+                    form.reset();
+                    form.classList.remove("was-validated");
+                } else {
+                    alert("Erro ao cadastrar aluno.");
+                }
+            } catch (err) {
+                console.error("Erro ao cadastrar:", err);
+                alert("Erro ao cadastrar aluno.");
+            }
+        }
+    </script>
+<script>
+        const fluxoListarAlunos = "https://prod-39.westus.logic.azure.com:443/workflows/79048ce5cf354d138a0168817f7dcb6a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w4fRbIzhqTsfvAll4OU6C8Y33Ad9sic5va2Wrt1duzY";
+
+        async function carregarTabelaAlunos() {
+            try {
+                const res = await fetch(fluxoListarAlunos, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+
+                const json = await res.json();
+                const alunos = json.value || [];
+
+                const corpoTabela = document.getElementById("tabelaAlunosBody");
+                corpoTabela.innerHTML = "";
+
+                console.log("Aluno:", alunos);
+
+                alunos.forEach(aluno => {
+                    const linha = document.createElement("tr");
+                    linha.innerHTML = `
+                        <td>${aluno["CPF"]}</td>
+                        <td>${aluno["Nome Completo"]}</td>
+                        <td>${aluno["Turma"]}</td>
+                        <td>${aluno["Plano"]}</td>
+                        <td>
+          <span class="badge bg-${aluno.Status === 'Ativo' ? 'success' : aluno.Status === 'Pendente' ? 'warning text-dark' : 'danger'}">
+            ${aluno.Status}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-primary btn-sm me-1">Editar</button>
+          <button class="btn btn-danger btn-sm me-1">Excluir</button>
+          <button class="btn btn-secondary btn-sm">Histórico</button>
+        </td>
+      `;
+                    corpoTabela.appendChild(linha);
+                });
+            } catch (err) {
+                console.error("Erro ao carregar alunos:", err);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", carregarTabelaAlunos);
+    </script>
+<script>
+
+async function carregarTabelaAlunos() {
+  try {
+    const res = await fetch(fluxoListarAlunos, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({})
+    });
+
+    const json = await res.json();
+    const alunos = json.value || [];
+
+    const corpoTabela = document.getElementById("tabelaAlunosBody");
+    corpoTabela.innerHTML = "";
+
+    console.log("Alunos retornados:", alunos);
+
+    alunos.forEach(aluno => {
+      const linha = document.createElement("tr");
+      linha.innerHTML = `
+        <td>${aluno["CPF"]}</td>
+        <td>${aluno["Nome Completo"]}</td>
+        <td>${aluno["Turma"]}</td>
+        <td>${aluno["Plano"]}</td>
+        <td>
+          <span class="badge bg-${aluno["Status"] === 'Ativo' ? 'success' : aluno["Status"] === 'Pendente' ? 'warning text-dark' : 'danger'}">
+            ${aluno["Status"]}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-primary btn-sm me-1">Editar</button>
+          <button class="btn btn-danger btn-sm me-1">Excluir</button>
+          <button class="btn btn-secondary btn-sm">Histórico</button>
+        </td>
+      `;
+      corpoTabela.appendChild(linha);
+    });
+  } catch (err) {
+    console.error("Erro ao carregar alunos:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", carregarTabelaAlunos);
+</script></body>
 </html>
